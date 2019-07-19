@@ -30,6 +30,12 @@ export default new Router({
             name: 'signup',
             component: () =>
                 import ('./components/SignupEmail.vue')
+        },
+        {
+            path: '/signout',
+            name: 'signout',
+            component: () =>
+                import ('./components/Signout.vue')
         }
     ]
 })

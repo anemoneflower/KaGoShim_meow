@@ -2,20 +2,16 @@
     <div class="signupEmail">
     
         <h4>이메일이다냥</h4>
-    
         <input v-model="email" type="text">
     
         <h4>
             비밀번호6자리이상이다냥
             <button type="password" @click="switchVisibility()"> visible </button>
         </h4>
-    
         <input :type="passwordFieldType" v-model="password">
     
         <div>
-    
             <button @click="SignUp()">가입하냥?</button>
-    
         </div>
         <h2> {{verificationmsg}} </h2>
     
@@ -61,7 +57,7 @@ export default {
 
 <style scoped>
 h4 {
-    margin: 40px;
+    margin: 20px;
 }
 
 button {
