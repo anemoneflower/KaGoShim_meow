@@ -1,12 +1,20 @@
 <template>
     <div class="signupEmail">
+    
         <h4>이메일이다냥</h4>
-        <input type="text">
+    
+        <input v-model="email" type="text">
+    
         <h4>비밀번호6자리이상이다냥</h4>
-        <input type="text">
+    
+        <input v-model="password" type="text">
+    
         <div>
+    
             <button @click="SignUp()">가입하냥?</button>
+    
         </div>
+    
     </div>
 </template>
 
@@ -14,14 +22,14 @@
 import firebase from 'firebase'
 export default {
     name: 'SignupEmail',
-    data(){
-        return{
-            email:'',
-            password:''
+    data() {
+        return {
+            email: '',
+            password: ''
         }
     },
-    methods:{
-        SignUp(){
+    methods: {
+        SignUp() {
             firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
                 .then((user) => {
                     console.log(user)
@@ -31,13 +39,22 @@ export default {
                 })
         }
     }
-    
+
 }
 </script>
 
 <style scoped>
-h4{
+h4 {
     margin: 40px;
 }
+
+button {
+    margin: 40px;
+}
+
+button:hover{
+    background: #6666
+}
+
 </style>
 
