@@ -5,13 +5,19 @@
     
         <input v-model="email" type="text">
     
-        <h4>비밀번호다냥</h4>
+        <h4>
+            비밀번호다냥
+            <button type="password" @click="switchVisibility()"> visible </button>
+        </h4>
     
-        <input v-model="password" type="text">
+        <input :type="passwordFieldType" v-model="password">
     
         <div>
     
             <button @click="SignIn()">로그인하냥?</button>
+            <button>
+                <router-link to="/signup">회원가입하라냥!</router-link>
+            </button>
     
         </div>
     
@@ -26,30 +32,43 @@ export default {
     name: 'SigninEmail',
     data() {
         return {
-            msg:'',
             email: '',
-            password: ''
+            password: '',
+            passwordFieldType: 'password'
         }
     },
     methods: {
         SignIn() {
-            firebase.auth().signInWithEmailAndPassword(this.email, this.password).catch(function(error){
-                var errorCode = error.code;
-                var errorMessage = error.message;
-                console.log(this.email)
-                console.log(this.password)
-                console.log("ERROR", error.message)
-            });
-
-            firebase.auth().onAuthStateChanged(function(user) {
-                if (user) {
+            firebase.auth().signInWithEmailAndPassword(this.email, this.password)
+                .then((user) =>{
                     console.log(user)
-                } else {
-                    console.log("NOUSER")
-                }
-            });
+                })
+                .catch(function(error){
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+                    console.log(this.email)
+                    console.log(this.password)
+                    console.log("ERROR", error.message)
+                })
+
+            // firebase.auth().onAuthStateChanged(function(user) {
+            //     if (user) {
+            //         console.log(user)
+            //     } else {
+            //         console.log("NOUSER")
+            //     }
+            // });
+        },
+        switchVisibility(){
+            this.passwordFieldType = this.passwordFieldType==='password' ? 'text' : 'password'
         }
     }
 
 }
 </script>
+<style scoped>
+button{
+    margin:20px;
+    margin-left: 10px;
+}
+</style>
