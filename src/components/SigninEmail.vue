@@ -28,6 +28,11 @@
 import * as firebase from "firebase/app"
 import "firebase/auth"
 
+
+// import BootstrapVue from 'bootstrap-vue'
+
+// Vue.use(BootstrapVue)
+
 export default {
     name: 'SigninEmail',
     data() {
@@ -43,12 +48,22 @@ export default {
                 .then((user) =>{
                     console.log(user)
                 })
+                // .catch((error)=>{
+                //     this.$bvToast.toast('가입안했으면 회원가입하라냥!', {
+                //         title: 'Wrong Email or Password',
+                //         toaster: 'b-toaster-top-center',
+                //         solid: true,
+                //         variant: "primary",
+                //         autoHideDelay: 10000
+                //     })
+                // })
                 .catch(function(error){
                     var errorCode = error.code;
                     var errorMessage = error.message;
-                    console.log(this.email)
-                    console.log(this.password)
+                    // console.log(this.email)
+                    // console.log(this.password)
                     console.log("ERROR", error.message)
+                    // makeToast()
                 })
 
             // firebase.auth().onAuthStateChanged(function(user) {
@@ -62,6 +77,7 @@ export default {
         switchVisibility(){
             this.passwordFieldType = this.passwordFieldType==='password' ? 'text' : 'password'
         }
+      
     }
 
 }

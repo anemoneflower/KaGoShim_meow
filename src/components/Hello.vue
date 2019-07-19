@@ -1,9 +1,9 @@
 <template>
     <div class="helloworld">
         <h4>이메일</h4>
-        <input v-model="email" type="text"></input>
+        <input v-model="email" type="text">
         <h4>패스워드</h4>
-        <input v-model="password" type="password"></input>
+        <input v-model="password" type="password">
         <div>
             <button @click="SignUp()">가입하기</button>
         </div>
