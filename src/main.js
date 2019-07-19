@@ -3,6 +3,7 @@ import App from './App.vue'
 import router from './router'
 
 import firebase from 'firebase'
+import 'firebase/firestore'
 
 Vue.config.productionTip = false
 
@@ -17,7 +18,8 @@ var firebaseConfig = {
     appId: "1:436058054311:web:68e13fc17dea2f23"
 };
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+const firebaseApp = firebase.initializeApp(firebaseConfig);
+export default firebaseApp.firestore();
 
 new Vue({
     router,
