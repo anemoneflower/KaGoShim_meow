@@ -5,7 +5,7 @@ import router from './router'
 import firebase from 'firebase'
 
 Vue.config.productionTip = false
-
+let app;
 // Your web app's Firebase configuration
 var firebaseConfig = {
     apiKey: "AIzaSyBv2nclaViHPFgmZuuogaJht0o7rbxfuB8",
@@ -18,8 +18,15 @@ var firebaseConfig = {
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-
-new Vue({
-    router,
-    render: h => h(App)
-}).$mount('#app')
+firebase.auth().onAuthStateChanged(function(user) {
+        if (!app) {
+            app = new Vue({
+                router,
+                render: h => h(App)
+            }).$mount('#app')
+        }
+    })
+    // new Vue({
+    //     router,
+    //     render: h => h(App)
+    // }).$mount('#app')
