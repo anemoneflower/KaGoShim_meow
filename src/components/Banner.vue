@@ -1,16 +1,5 @@
 <template>
     <vue-navigation-bar :options="navbarData" >
-        <!-- Custom Slot -->
-                    <template v-slot:custom-section>
-                        <div class="custom-section-content">
-                            <div class="input-group input-group-sm">
-                                <input type="text" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
-                                <div class="input-group-append">
-                                    <button class="btn btn-primary" type="button" id="button-addon1" text="search"><i class="fa fa-search"></i></button>
-                                </div>
-                            </div>
-                        </div>
-                    </template>
     </vue-navigation-bar>    
 </template>
 
@@ -126,7 +115,7 @@
                         // },
                         {
                             type: 'button',
-                            text: 'Login',
+                            text: 'login',
                             path: '/login',
                             class: 'button-pink'
                         }
