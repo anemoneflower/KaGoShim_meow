@@ -40,6 +40,12 @@ export default new Router({
             name: 'mypage',
             component: () =>
                 import ('./views/MyPage.vue')
+        },
+        {
+            path: '/support',
+            name: 'support',
+            component: () =>
+                import ('./views/Support.vue')
         }
     ]
 })

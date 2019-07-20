@@ -3,6 +3,7 @@
     <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link> |
+      <router-link to="/support">Support</router-link> |
       <button @click="Link()"> {{loginLink}}</button>
       <!-- <router-link to="checkuser()">{{loginLink}}</router-link> -->
     </div>
