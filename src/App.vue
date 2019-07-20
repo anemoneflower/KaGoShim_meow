@@ -1,8 +1,9 @@
 <template>
   <div id="app">
+    <banner/>
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link> |
+      <!-- <router-link to="/">Home</router-link> |
+      <router-link to="/about">About</router-link> | -->
       <button @click="Link()"> {{loginLink}}</button>
       <!-- <router-link to="checkuser()">{{loginLink}}</router-link> -->
     </div>
@@ -12,9 +13,13 @@
 
 <script>
 import firebase from 'firebase'
-import { userInfo } from 'os';
+import { userInfo } from 'os'
+import banner from './components/Banner.vue'
 export default {
   name: 'App',
+  components: {
+        banner
+    },
   data(){
     return{
       loginLink: ''
@@ -74,6 +79,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 0px;
 }
 </style>
