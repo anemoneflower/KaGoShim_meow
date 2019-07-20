@@ -54,7 +54,7 @@ export default {
             firebase.auth().signInWithEmailAndPassword(this.email, this.password)
                 .then((user) =>{
                     console.log(user)
-                    this.$router.replace('signout')
+                    this.$router.replace('mypage')
                 })
                 // .catch((error)=>{
                 //     this.$bvToast.toast('가입안했으면 회원가입하라냥!', {

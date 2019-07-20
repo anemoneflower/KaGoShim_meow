@@ -5,7 +5,11 @@ import Home from './views/Home.vue'
 Vue.use(Router)
 
 export default new Router({
-    routes: [{
+    routes: [{ //존재하지 않는 모든 경로를 로그인 컴포넌트로 리다이렉션
+            path: '*',
+            redirect: '/login'
+        },
+        {
             path: '/',
             name: 'home',
             component: Home
@@ -32,10 +36,10 @@ export default new Router({
                 import ('./components/SignupEmail.vue')
         },
         {
-            path: '/signout',
-            name: 'signout',
+            path: '/mypage',
+            name: 'mypage',
             component: () =>
-                import ('./components/Signout.vue')
+                import ('./views/MyPage.vue')
         }
     ]
 })
