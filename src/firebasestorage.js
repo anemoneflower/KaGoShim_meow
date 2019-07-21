@@ -10,7 +10,7 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 Vue.config.productionTip = false
 Vue.use(BootstrapVue)
 
-let app;
+let app1;
 // Your web app's Firebase configuration
 var firebaseConfig = {
     apiKey: "AIzaSyBv2nclaViHPFgmZuuogaJht0o7rbxfuB8",
@@ -23,7 +23,7 @@ var firebaseConfig = {
 };
 // Initialize Firebase
 const firebaseApp = firebase.initializeApp(firebaseConfig);
-export default firebaseApp.firestore();
+export default firebaseApp.storage();
 firebase.auth().onAuthStateChanged(function(user) {
         if (!app) {
             app = new Vue({

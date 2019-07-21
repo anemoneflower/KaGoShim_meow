@@ -1,15 +1,14 @@
  <template>
 
   <section class="container">
-    <file-uploader v-on:downloadURL="getDownloadUrl" v-bind:oldImgUrl="oldImgUrl" class="mb-4"></file-uploader>
-    <h1>Add New Contact</h1>
-
+    <h1>Add New Cat Item</h1>
+    <upload/>
     <form @submit.prevent="saveContact">
-
       <div class="field">
-        <label class="label">First Name</label>
+
+        <label class="label">상품명</label>
         <div class="control">
-          <input class="input" type="text" placeholder="First Name" v-model="firstname" required>
+          <input class="input" type="text" placeholder="상품명" v-model="firstname" required>
         </div>
       </div>
 
@@ -21,16 +20,16 @@
       </div> -->
 
       <div class="field">
-        <label class="label">Email Address</label>
+        <label class="label">가격</label>
         <div class="control">
-          <input class="input" type="email" placeholder="Email Address" v-model="emailaddress" required>
+          <input class="input" type="text" placeholder="가격" v-model="emailaddress" required>
         </div>
       </div>
 
       <div class="field">
-        <label class="label">Phone Number</label>
+        <label class="label">상세 설명</label>
         <div class="control">
-          <input class="input" type="text" placeholder="Phone Number" v-model="phonenumber" required>
+          <input class="input" type="text" placeholder="설명" v-model="phonenumber" required>
         </div>
       </div>
 
@@ -49,8 +48,13 @@
     import db from '../main.js'
     // import { firestorage } from '../firebase/firestorage'
     // import FileUploader from './FileUploader'
+    import upload from './Upload.vue'
     export default {
       name: 'new-contact',
+      components: {
+          upload
+      },
+    
       data () {
         return {
           firstname: null,

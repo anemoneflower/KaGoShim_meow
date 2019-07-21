@@ -7,7 +7,8 @@
       <div class="column is-8">
         <h1>냥이 굿즈다냥!</h1>
         <div>
-            <b-button>새 굿즈 등록하기</b-button>
+            <router-link to="/goods/add">냥이템 등록</router-link>
+    
         </div>
        <div>
             <b-card
@@ -145,6 +146,9 @@
 <script>
   import db from '../main.js'
   import Carousel from '../components/Carousel.vue'
+  import Vue from 'vue'
+
+
   // import slideshow from '../components/Slideshow.vue'
   export default {
     name: 'goods',

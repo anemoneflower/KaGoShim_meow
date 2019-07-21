@@ -54,8 +54,13 @@ export default new Router({
           {
             path: '/goods/add',
             name: 'new-goods',
-            component: () => import('./components/NewGoods')
+            component: () => import('./components/NewGoods.vue')
           },
+          {
+              path: '/upload',
+              name: 'upload',
+              component: () => import('./components/Upload.vue')
+          }
           //Details of a goods item
         //   {
         //     path: '/goods/:item/:success?',
