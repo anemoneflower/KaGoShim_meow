@@ -40,6 +40,12 @@ export default new Router({
             name: 'mypage',
             component: () =>
                 import ('./views/MyPage.vue')
+        },
+        {
+            path: '/slideshow',
+            name: 'slideshow',
+            component: () => import ('./components/Carousel.vue')
         }
+
     ]
 })
