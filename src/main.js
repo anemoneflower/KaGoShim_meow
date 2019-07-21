@@ -1,10 +1,14 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
-
+import BootstrapVue from 'bootstrap-vue'
 import firebase from 'firebase'
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 Vue.config.productionTip = false
+Vue.use(BootstrapVue)
+
 let app;
 // Your web app's Firebase configuration
 var firebaseConfig = {
@@ -17,7 +21,8 @@ var firebaseConfig = {
     appId: "1:436058054311:web:68e13fc17dea2f23"
 };
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+const firebaseApp = firebase.initializeApp(firebaseConfig);
+export default firebaseApp.firestore();
 firebase.auth().onAuthStateChanged(function(user) {
         if (!app) {
             app = new Vue({
