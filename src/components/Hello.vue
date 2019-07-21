@@ -1,6 +1,5 @@
 <template>
     <div class="helloworld">
-        <!-- <Carousel/> -->
         <h4>Welcome!!</h4>
     </div>
 </template>
@@ -10,11 +9,9 @@
 
 
 import firebase from 'firebase'
-import Carousel from './Carousel.vue'
 export default {
     name: 'HelloWorld',
     components: {
-        Carousel
     },
     data() {
         return {

@@ -30,12 +30,12 @@
                         {
                             type: 'link',
                             text: '카고쉼은',
-                            path: '/',
+                            path: '/about',
                             subMenuOptions: [
                                 {
                                     type: 'link',
                                     text: '소개',
-                                    path: '#',
+                                    path: '/about',
                                 },
                                 {
                                     type: 'hr',
@@ -77,12 +77,12 @@
                         {
                             type: 'link',
                             text: '굿즈 마켓',
-                            path: '/',
+                            path: '/goods',
                             subMenuOptions: [
                                 {
                                     type: 'link',
                                     text: '전체보기',
-                                    path: '/',
+                                    path: '/goods',
                                 },
                                 {
                                     type: 'hr',
@@ -91,12 +91,12 @@
                                 {
                                     type: 'link',
                                     text: '인형',
-                                    path: '/',
+                                    path: '/goods',
                                 },
                                 {
                                     type: 'link',
                                     text: '스티커',
-                                    path: '/',
+                                    path: '/goods',
                                 },
                             ]
                         },
