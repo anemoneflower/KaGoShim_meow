@@ -1,40 +1,53 @@
 <template>
   <div class="supportWriter">
-    <h1>Add New Support Component</h1>
-    
-    <article class="covers" v-for="(content, idx) in support" :key="idx">
-      <div>
-          <img style="margin: 10px" :src="content.image" height="291px" width="192px">
-          <p >{{ content.title }}</p>
-          <hr>
-          <button class="button" @click="deleteSupport(content.id)">
-            Delete
-          </button>
-      </div>
-    </article>
+    <h1>새 후원 리스트라냥!</h1>
+    <b-form class="formgroups" @submit="addSupport(title, myFiles, amount, body)">
+      <b-form-group id="group-title">
+        <b-form-input
+          id="title"
+          v-model="title"
+          size="lg"
+          required
+          placeholder="새 후원 제목을 입력하라냥"
+        ></b-form-input>
+      </b-form-group>
 
-    <form @submit="addSupport(title, myFiles, amount, body)">
-      <input type="file" @change="onFileSelected">
-      <input v-model="title" placeholder="Title" class="input" required>
-      <input v-model="amount" placeholder="Amount" class="input" required>
-      <hr>
-      <input v-model="body" placeholder="Insert Body" class="input" required>
-      <hr>
-      <div class="filepond">
+      <b-form-group id="group-amount">
+        <b-form-input
+          id="amount"
+          v-model="amount"
+          type="number"
+          required
+          placeholder="필요한 후원 금액이 얼마냥?"
+        ></b-form-input>
+      </b-form-group>
+
+      <b-form-group id="group-body">
+        <b-form-textarea
+          id="body"
+          v-model="body"
+          placeholder="집사들에게 어필해보라냥!"
+          rows="13"
+          no-resize
+          required
+        ></b-form-textarea>
+      </b-form-group>
+
+      <b-form-group id="group-img">
         <file-pond
             name="test"
             ref="pond"
-            labelIdle="Drop files here..."
-            allowMultiple="true"
+            labelIdle="이미지를 올려라냥 @.@"
+            allowMultiple="false"
             acceptedFileTypes="image/jpeg, image/png"
             v-bind:files="myFiles"
-            v-on:init="handleFilePondInit"/>
-      </div>
-      <hr>
-      <button type="submit" class="button">Upload</button>
-      
-    </form>
-    <button @click="checkfilepond" class="button">TESTMETADATA</button>
+            v-on:init="handleFilePondInit"
+            required/>
+      </b-form-group>
+
+      <b-button id="submitbtn" type="submit" variant="dark">올릴거냥?</b-button>
+    </b-form>
+
   </div>
 </template>
 
@@ -59,64 +72,43 @@ var storageRef = storage.ref();
 export default {
     name: 'supportWriter',
     data: function() {
-        return { myFiles: [],
-        support: [],
-            title: '',
-            image:'',
-            amount:'',
-            body:'',
-            imgsrc: "https://placekitten.com/500/350",
-            storageRef:'',
-            kittenRef:'',
-            selectedFile: null
-            
-            };
-        
+        return { 
+          myFiles: [],
+          title: '',
+          amount:'',
+          body:''
+        };
     },
-    firestore(){
-        return{
-            support: db.collection('Support').orderBy('createdAt'),
-            // storageRef: firebase.stroage().ref(),
-            // kittenRef: stroageRef.child("https://placekitten.com/500/350")
-            
-        }
-    },
+    
     methods: {
         handleFilePondInit: function() {
             console.log('FilePond has initialized');
-            
             // FilePond instance methods are available on `this.$refs.pond`
         },
-        checkfilepond(){
-            console.log(this.$refs.pond.getFiles())
-            console.log(this.$refs.pond.getFiles()[0].file)
-            var uploadRef = storageRef.child('Support1/test1.jpg')
-            uploadRef.put(this.$refs.pond.getFiles()[0].file).then(function(snapshot){
-              console.log('UPLOAD IMAGE')
-            })
-        },
         addSupport (title, image, amount, body) {
-            console.log(this.$refs.pond.getFiles())
+            // console.log(this.$refs.pond.getFiles())
             const createdAt = new Date()
-            image = this.selectedFile
+            image = this.$refs.pond.getFiles()[0].file
             console.log(image)
-            var uploadRef = storageRef.child('Support/test.jpg')
-            db.collection('Support').add({ title, amount, body, createdAt })
+            var uploadRef = storageRef.child('Support/'+this.title+'.jpg')
+            db.collection('Support').doc(this.title).set({ title, amount, body, createdAt })
             uploadRef.put(image).then(function(snapshot){
               console.log('UPLOAD IMAGE')
             })
             // Clear values
             this.name = ''
             this.image = ''
+            this.body = ''
+            this.$router.replace('support')
         },
-        deleteSupport (id) {
-            db.collection('Support').doc(id).delete()
-        },
-        onFileSelected(event){
-          console.log("uploadfile")
-          this.selectedFile = event.target.files[0]
-          console.log("sele: ", this.selectedFile)
-        }
+        // deleteSupport (id) {
+        //     db.collection('Support').doc(id).delete()
+        // },
+        // onFileSelected(event){
+        //   console.log("uploadfile")
+        //   this.selectedFile = event.target.files[0]
+        //   console.log("sele: ", this.selectedFile)
+        // }
     },
     components: {
         FilePond
@@ -131,27 +123,11 @@ export default {
     width: 50%;
     margin-left: 25%;
   }
-  .dropbox {
-    outline: 2px dashed #aaa;
-    background: #7fb4dd;
-    width: 300px;
-    height: 300px;
-    position: relative; 
-     margin: 0 auto;
-  } 
-  .dropbox > h2{
-    position: absolute;
-    top: 50px;
-    left: 0;
-    z-index: 2;
+  .formgroups {
+    width:70%;
+    margin-left:15%;
   }
-  .input-file{
-    position: absolute;
-    opacity: 0;
-    width:100%;
-    height:100%;
-    top:0;
-    left:0;
-     z-index: 3;
-  }
+  /* .submitbtn {
+    background-color:#ffd9df;
+  } */
 </style>

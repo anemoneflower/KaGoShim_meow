@@ -53,12 +53,5 @@ export default new Router({
             component: () =>
                 import ('./components/SupportWriter.vue')
         }
-        // },
-        // {
-        //     path: '/supportwrite',
-        //     name: 'supportwrite',
-        //     component: () =>
-        //         import ('./views/SupportWrite.vue')
-        // }
     ]
 })

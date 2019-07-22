@@ -57,16 +57,21 @@
 
 
 <script>
-
+import firebase from 'firebase'
+import {db} from '../main'
 // Get a reference to the database service
 export default {
     name: 'supporthome',
     data() {
         return {
-            
+            support: []
         }
     },
-    
+    firestore(){
+        return{
+            support: db.collection('Support').orderBy('createdAt')
+        }
+    },
     methods: {
         
     }
