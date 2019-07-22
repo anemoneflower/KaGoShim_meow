@@ -5,7 +5,7 @@
 
         <b-card-group columns class="mx-auto md-1 m-5" style="width: 60%">
 
-            <b-card title="Title" img-src="https://placekitten.com/500/350" img-alt="Image" img-top class="mr-3">
+            <b-card title=Support img-src="https://placekitten.com/500/350" img-alt="Image" img-top class="mr-3">
                 <b-card-text>
                     This card has supporting text below as a natural lead-in to additional content.
                 </b-card-text>
@@ -64,16 +64,23 @@ export default {
     name: 'supporthome',
     data() {
         return {
-            support: []
+            support: [],
+            imgpath: []
         }
     },
     firestore(){
         return{
-            support: db.collection('Support').orderBy('createdAt')
+            support: db.collection('Support').orderBy('createdAt'),
+            imgpath: getimgpath()
         }
     },
     methods: {
-        
+        getimgpath(){
+            console.log("Support: ", this.support)
+            console.log("Supportlen: ", length(this.support))
+
+
+        }
     }
 }
 </script>
