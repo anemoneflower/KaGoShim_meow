@@ -90,7 +90,7 @@ export default {
             const createdAt = new Date()
             image = this.$refs.pond.getFiles()[0].file
             console.log(image)
-            var uploadRef = storageRef.child('Support/'+this.title+'.jpg')
+            var uploadRef = storageRef.child('Support/'+this.title)
             db.collection('Support').doc(this.title).set({ title, amount, body, createdAt })
             uploadRef.put(image).then(function(snapshot){
               console.log('UPLOAD IMAGE')
