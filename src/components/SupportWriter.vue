@@ -91,15 +91,34 @@ export default {
             image = this.$refs.pond.getFiles()[0].file
             console.log(image)
             var uploadRef = storageRef.child('Support/'+this.title)
-            db.collection('Support').doc(this.title).set({ title, amount, body, createdAt })
-            uploadRef.put(image).then(function(snapshot){
-              console.log('UPLOAD IMAGE')
-            })
-            // Clear values
-            this.name = ''
-            this.image = ''
-            this.body = ''
-            this.$router.replace('support')
+            var imgurl
+            uploadRef.put(image).then(success => 
+              uploadRef.getDownloadURL()
+                .then(url =>{
+                    imgurl = url
+                    console.log("url OK: ", imgurl)
+                    db.collection('Support').doc(this.title).set({ title, amount, body, createdAt, imgurl })
+                    // Clear values
+                    this.name = ''
+                    this.image = ''
+                    this.body = ''
+                    console.log("Router!!")
+                    this.$router.replace('support')
+                    
+                  })
+                .catch(error => {
+                    console.log("Getting file url error")
+                })
+            )
+            
+            // .then(function(snapshot){
+            //   console.log('UPLOAD IMAGE')
+            // })
+
+
+            
+            
+            
         },
         // deleteSupport (id) {
         //     db.collection('Support').doc(id).delete()
