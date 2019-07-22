@@ -60,6 +60,24 @@ export default new Router({
               path: '/upload',
               name: 'upload',
               component: () => import('./components/Upload.vue')
+          },
+          {
+            path: '/posts',
+            name: 'community',
+            // route level code-splitting
+            // this generates a separate chunk (about.[hash].js) for this route
+            // which is lazy-loaded when the route is visited.
+            component: () => import(/* webpackChunkName: "about" */ './views/community.vue')
+          },
+          {
+            path: '/posts/add',
+            name: 'new-posts',
+            component: () => import('./components/newpost.vue')
+          },
+          {
+            path: '/gallery',
+            name: 'gallery',
+            component: () => import('./view/gallery.vue')
           }
           //Details of a goods item
         //   {

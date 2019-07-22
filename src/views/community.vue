@@ -2,10 +2,40 @@
   <div id="contactspage">
      
   <section class="container">
-     <Carousel/>
     <div class="columns">
       <div class="column is-8">
         <h1>냥이 굿즈다냥!</h1>
+
+        <div>
+            <b-card>
+                <b-media>
+                <b-img slot="aside" blank blank-color="#ccc" width="64" alt="placeholder"></b-img>
+
+                <h5 class="mt-0">2019.07.23  2:58</h5>
+                <p>
+                    지슈
+                </p>
+                <p>
+                    아름냥이들 덕분에 맨날 힐링합니당~~
+                </p>
+
+                <b-media>
+                    <b-img slot="aside" blank blank-color="#ccc" width="64" alt="placeholder"></b-img>
+
+                    <h5 class="mt-0">댓글</h5>
+                    <p class="mb-0">
+                    Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in
+                    faucibus.
+                    </p>
+                </b-media>  
+                </b-media>
+            </b-card>
+        </div>
+
+
+
+
+
         <div>
             <router-link to="/goods/add">냥이템 등록</router-link>
     
@@ -78,65 +108,7 @@
               </div>
             </div>
           </div>
-
-          <!-- <div class="user-list">
-            <div class="columns">
-              <div class="column is-8">
-                <p class="user-list__header animated-background__header"></p>
-                <p class="user-list__sub animated-background__sub"></p>
-                <p class="user-list__sub animated-background__sub"></p>
-              </div>
-              <div class="column is-4 right">
-                <router-link class="button is-primary" to="/contacts/user">자세히 보기</router-link>
-              </div>
-            </div>
-          </div>
-
-          <div class="user-list">
-            <div class="columns">
-              <div class="column is-8">
-                <p class="user-list__header animated-background__header"></p>
-                <p class="user-list__sub animated-background__sub"></p>
-                <p class="user-list__sub animated-background__sub"></p>
-              </div>
-              <div class="column is-4 right">
-                <router-link class="button is-primary" to="/contacts/user">자세히 보기</router-link>
-              </div>
-            </div>
-          </div>
-
-          <div class="user-list">
-            <div class="columns">
-              <div class="column is-8">
-                <p class="user-list__header animated-background__header"></p>
-                <p class="user-list__sub animated-background__sub"></p>
-                <p class="user-list__sub animated-background__sub"></p>
-              </div>
-              <div class="column is-4 right">
-                <router-link class="button is-primary" to="/contacts/user">자세히 보기</router-link>
-              </div>
-            </div>
-          </div> -->
         </div>
-
-        <!-- <div class="user-list" v-for="item in items" :key="item.id">
-          <div class="columns">
-            <div class="column is-8">
-              <p class="user-list__header">{{item.itemName}} </p>
-              <div class="inner">
-                <div class="left">
-                  <p class="user-list__sub"><strong>가격</strong>: {{item.price}}</p>
-                </div>
-                <div class="right">
-                  <p class="user-list__sub"><strong>설명</strong>: {{item.shortIntro}}</p>
-                </div>
-              </div>
-            </div>
-            <div class="column is-4 right">
-              <router-link class="button is-primary" v-bind:to="{ name: 'view-item', params: { item: item.slug }}">자세히 보기</router-link>
-            </div>
-          </div>
-        </div> -->
       </div>
     </div>
   </section>
@@ -188,26 +160,26 @@
 }
   @font-face { font-family: 'Goyang'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Goyang.woff') format('woff'); font-weight: normal; font-style: normal; }
   @font-face { font-family: 'LeeHyunJi'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/LeeHyunJi.woff') format('woff'); font-weight: normal; font-style: normal; }
-
+  @font-face { font-family: 'GyeonggiBatang'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/GyeonggiBatang.woff') format('woff'); font-weight: normal; font-style: normal; }
 // @font-face { font-family: 'yg-jalnan'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff'); font-weight: normal; font-style: normal; }
 //   .temp{
 //     font-family: 'yg-jalnan', sans-serif;
 //   }
     .b-card-text{
-        font-family: 'LeeHyunJi', cursive;
+        font-family: 'Goyang', cursive;
         font-size: 100px;
     }
 
     .card-title{
-        font-family: 'LeeHyunJi', cursive;
+        font-family: 'Goyang', cursive;
         font-size: 100px;
     }
     .card-body{
-        font-family: 'LeeHyunJi', cursive;
+        font-family: 'Goyang', cursive;
         font-size: 30px;
     }
   h1 {
-    font-family: 'LeeHyunJi', cursive;
+    font-family: 'Goyang', cursive;
     font-size: 100px;
     margin: 30px 0;
   }
