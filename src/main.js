@@ -17,7 +17,7 @@ var firebaseConfig = {
     authDomain: "kagosim-meow.firebaseapp.com",
     databaseURL: "https://kagosim-meow.firebaseio.com",
     projectId: "kagosim-meow",
-    storageBucket: "",
+    storageBucket: "gs://kagosim-meow.appspot.com/",
     messagingSenderId: "436058054311",
     appId: "1:436058054311:web:68e13fc17dea2f23"
 };
@@ -37,3 +37,5 @@ firebase.auth().onAuthStateChanged(function(user) {
     // }).$mount('#app')
 Vue.use(PortalVue)
 Vue.use(BootstrapVue)
+export const db = firebase.firestore()
+export const storage = firebase.storage()
