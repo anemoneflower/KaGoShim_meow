@@ -52,7 +52,7 @@ export default new Router({
             name: 'supportwriter',
             component: () =>
                 import ('./components/SupportWriter.vue')
-        }
+
         },
         //Goods page
         {
@@ -61,21 +61,23 @@ export default new Router({
             // route level code-splitting
             // this generates a separate chunk (about.[hash].js) for this route
             // which is lazy-loaded when the route is visited.
-            component: () => import(/* webpackChunkName: "about" */ './views/Goods.vue')
-          },
-          //Add goods page
-          {
+            component: () =>
+                import ( /* webpackChunkName: "about" */ './views/Goods.vue')
+        },
+        //Add goods page
+        {
             path: '/goods/add',
             name: 'new-goods',
-            component: () => import('./components/NewGoods')
-          },
-          //Details of a goods item
+            component: () =>
+                import ('./components/NewGoods')
+        },
+        //Details of a goods item
         //   {
         //     path: '/goods/:item/:success?',
         //     name: 'view-good',
         //     component: ViewGood
         //   }
-      
+
         // {
         //     path: '/slideshow',
         //     name: 'slideshow',

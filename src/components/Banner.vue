@@ -103,7 +103,7 @@
                         {
                             type: 'link',
                             text: '후원하기',
-                            path: '/',
+                            path: '/support',
                         },
                     ],
                     menuOptionsRight: [
