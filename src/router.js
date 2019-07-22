@@ -41,6 +41,19 @@ export default new Router({
             component: () =>
                 import ('./views/MyPage.vue')
         },
+        {
+            path: '/support',
+            name: 'support',
+            component: () =>
+                import ('./views/Support.vue')
+        },
+        {
+            path: '/supportwriter',
+            name: 'supportwriter',
+            component: () =>
+                import ('./components/SupportWriter.vue')
+        }
+        },
         //Goods page
         {
             path: '/goods',
