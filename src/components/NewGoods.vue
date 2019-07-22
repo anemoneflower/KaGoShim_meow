@@ -3,6 +3,7 @@
   <section class="container">
     <h1>Add New Cat Item</h1>
     <upload/>
+    <newupload/>
     <form @submit.prevent="saveContact">
       <div class="field">
 
@@ -45,14 +46,16 @@
 </template>
  
  <script>
-    import db from '../main.js'
+    import {firestore} from '../firebase/firestorage.js'
     // import { firestorage } from '../firebase/firestorage'
     // import FileUploader from './FileUploader'
     import upload from './Upload.vue'
+    import newupload from './ImageDragUpload.vue'
     export default {
       name: 'new-contact',
       components: {
-          upload
+          upload,
+          newupload
       },
     
       data () {
@@ -65,7 +68,7 @@
       },
       methods: {
         saveContact () {
-          db.collection('contacts').add({
+          firestore.collection('contacts').add({
             firstname: this.firstname,
             lastname: this.lastname,
             emailaddress: this.emailaddress,

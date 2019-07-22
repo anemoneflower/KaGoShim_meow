@@ -144,7 +144,7 @@
 </template>
 
 <script>
-  import db from '../main.js'
+  import {firestore} from '../firebase/firestore.js'
   import Carousel from '../components/Carousel.vue'
   import Vue from 'vue'
 
@@ -162,7 +162,7 @@
       }
     },
     created () {
-      db.collection('MarketItemList').get().then((querySnapshot) => {
+      firestore.collection('MarketItemList').get().then((querySnapshot) => {
         this.loading = false
         querySnapshot.forEach((doc) => {
           let data = {

@@ -13,6 +13,7 @@
 
 <script>
 import firebase from 'firebase'
+import {firebaseAuth} from './firebase/firebaseAuth.js'
 import { userInfo } from 'os'
 import banner from './components/Banner.vue'
 export default {
@@ -28,7 +29,8 @@ export default {
   },
   created: function(){
     console.log(this)
-    firebase.auth().onAuthStateChanged((user) =>{
+    //firebase.auth().onAuthStateChanged((user) =>{
+    firebaseAuth.onAuthStateChanged((user) => {
       if(user){
         console.log("USER: ",user)
           if(user.emailVerified === true){
