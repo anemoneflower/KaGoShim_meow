@@ -17,7 +17,7 @@
       <b-carousel-slide
         class="carousel-text"
         caption="따끈따끈 신상!!!"
-        text="모찌모찌한 냥이 쿠션이당<3"
+        text="카고쉼은 요즘!"
         img-src="https://cdn.univ20.com/wp-content/uploads/2018/06/94b733c36e12d247cdbd51b0482fe43f.png"
         img-width="1024px"
       img-height="480px"
@@ -51,8 +51,7 @@
       <!-- Slide with blank fluid image to maintain slide aspect ratio -->
       <b-carousel-slide caption="Blank Image" img-blank img-alt="Blank image">
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eros felis, tincidunt
-          a tincidunt eget, convallis vel est. Ut pellentesque ut lacus vel interdum.
+          새소식!
         </p>
       </b-carousel-slide>
     </b-carousel>
@@ -97,14 +96,13 @@ Vue.use(CarouselPlugin)
 
     p {
         width: 100%;
-        text-align: left;
+        text-align: top;
         font-family: 'LeeHyunJi', cursive;
         font-size: 30px;
     }
 
     .carousel{
         width: 110rem;
-        height: 50rem;
         overflow: hidden;
     }
     
