@@ -1,5 +1,7 @@
 <template>
-    <vue-navigation-bar :options="navbarData" >
+    <vue-navigation-bar v-if="loginLink === 'login'" :options="navbarData_login" >
+    </vue-navigation-bar>    
+    <vue-navigation-bar v-else :options="navbarData_mypage" >
     </vue-navigation-bar>    
 </template>
 
@@ -17,7 +19,111 @@
         data () {
             return {
                 loginLink: '',
-                navbarData: {
+                navbarData_login: {
+                    elementId: 'main-navbar',
+                    isUsingVueRouter: true,
+                    mobileBreakpoint: 992,
+                    brandImagePath: '/',
+                    brandImage: require('@/assets/caticon.png'),
+                    brandImageAltText: 'vue-navigation-bar',
+                    collapseButtonStyle: 'dark',
+                    ariaLabelMainNav: 'Main Navigation',
+                    menuOptionsLeft: [
+                        {
+                            type: 'link',
+                            text: '카고쉼은',
+                            path: '/about',
+                            subMenuOptions: [
+                                {
+                                    type: 'link',
+                                    text: '소개',
+                                    path: '/about',
+                                },
+                                {
+                                    type: 'hr',
+                                },
+                                {
+                                    type: 'link',
+                                    text: '역사',
+                                    path: '/',
+                                },
+                                {
+                                    type: 'link',
+                                    text: '카고쉼 맵',
+                                    path: '/',
+                                },
+                            ]
+                        },
+                        {
+                            type: 'link',
+                            text: '게시판',
+                            path: '/',
+                            subMenuOptions: [
+                                {
+                                    type: 'link',
+                                    text: '핫한 글',
+                                    path: '/',
+                                },
+                                {
+                                    type: 'link',
+                                    text: '전체 글',
+                                    path: '/',
+                                },
+                                {
+                                    type: 'link',
+                                    text: '제보하기',
+                                    path: '/',
+                                },
+                            ]
+                        },
+                        {
+                            type: 'link',
+                            text: '굿즈 마켓',
+                            path: '/goods',
+                            subMenuOptions: [
+                                {
+                                    type: 'link',
+                                    text: '전체보기',
+                                    path: '/goods',
+                                },
+                                {
+                                    type: 'hr',
+                                    text: '카테고리'
+                                },
+                                {
+                                    type: 'link',
+                                    text: '인형',
+                                    path: '/goods',
+                                },
+                                {
+                                    type: 'link',
+                                    text: '스티커',
+                                    path: '/goods',
+                                },
+                            ]
+                        },
+                        {
+                            type: 'link',
+                            text: '후원하기',
+                            path: '/support',
+                        },
+                    ],
+                    menuOptionsRight: [
+                        // {
+                        //     type: 'button',
+                        //     text: 'Signup',
+                        //     path: '/signup',
+                        //     class: 'button-pink'
+                        // },
+                        {
+                            type: 'button',
+                            text: 'login',
+                            path: '/login',
+                            class: 'button-pink'
+                        }
+                    ]
+                },
+                navbarData_mypage: {
                     elementId: 'main-navbar',
                     isUsingVueRouter: true,
                     mobileBreakpoint: 992,
@@ -115,8 +221,8 @@
                         // },
                         {
                             type: 'button',
-                            text: 'login',
-                            path: '/login',
+                            text: 'mypage',
+                            path: '/mypage',
                             class: 'button-pink'
                         }
                     ]
