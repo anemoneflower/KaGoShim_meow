@@ -27,7 +27,12 @@ export default {
   //       console.log("USER: ",user)
   //         if(user.emailVerified === true){
   //           console.log("ALREADY LOGGED IN")
-  //           this.loginLink = 'mypage'
+  //           
+  
+
+
+
+  
   //         }
   //         else{
   //           console.log("NOT VERYFIED")

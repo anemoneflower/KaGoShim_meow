@@ -1,27 +1,25 @@
 <template>
     <div class="signinEmail">
     
-        <h4>이메일이다냥</h4>
-        <input v-model="email" type="text">
+        <h4 class="titles emailinput">이메일이다냥</h4>
+        <b-form-input class= "inputs border-secondary" style="width: 50%" type="email" v-model="email" size="lg" placeholder="NangNang@meow.com"></b-form-input>
     
-        <h4>
-            비밀번호다냥
-            <button type="password" @click="switchVisibility()"> visible </button>
-        </h4>
-        <input :type="passwordFieldType" v-model="password">
+        <h4 class="titles pwinput">비밀번호다냥</h4>
+        <b-input-group class= "inputs" style="width: 50%" size="lg">
+            <b-form-input class="pwinputs border-secondary" :type="passwordFieldType" v-model="password"></b-form-input>
+            <b-input-group-append>
+                <b-button class="m-0" @click="switchVisibility()" type="password" variant="dark">Visible</b-button>
+            </b-input-group-append>
+        </b-input-group>
     
         <div>
-            <button @click="SignIn()">로그인하냥?</button>
-            <button>
-                <router-link to="/signup">회원가입하라냥!</router-link>
-            </button>
+            <b-button class="signbtn" variant="dark" @click="SignIn()">로그인하냥?</b-button>
+            <b-button class="signbtn" variant="dark" @click="SignUp()">회원가입하라냥!</b-button>
         </div>
-        <p>
-            or Sign in with Google <br>
-            <button @click="GoogleSignIn()" class="social-button">
-                GoogleLogin
-            </button>
-        </p>
+
+        <b-button @click="GoogleSignIn()" class="social-button">
+            <img src="../assets/google_1.png"/>
+        </b-button>
     
     </div>
 </template>
@@ -82,7 +80,9 @@ export default {
             //     }
             // });
         },
-        
+        SignUp(){
+            this.$router.replace('signup')
+        },        
         GoogleSignIn(){
             const provider = new firebase.auth.GoogleAuthProvider();
 
@@ -102,17 +102,36 @@ export default {
         margin:20px;
         margin-left: 10px;
     }
-
-    .social-button{
-        width: 75px;
-        background: white;
-        padding: 10px;
-        border-radius: 100%;
-        /* box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0,2); */
+    .social-button{ 
         outline: 0;
         border: 0;
+        background: transparent;
+        margin-top: 50px;
     }
-    .social-button:active{
-        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+    .inputs{
+        margin-left: 25%;
+        margin-top: 10px;
+        background: #ffd9df;
+    }
+    .inputs::placeholder{
+        font-style: italic;
+        color: #aba9a9
+    }
+    .titles{
+        margin-top: 10%;
+        margin-bottom: 50px;
+    }
+    .pwinput{
+        margin-top: 7%;
+        margin-bottom: 50px;
+    }
+    .pwspace{
+        whitd-space: nowrap;
+    }
+    .pwinputs{
+        background: #ffd9df;
+    }
+    .signbtn{
+        margin: 5% 10px 20px 20px;
     }
 </style>

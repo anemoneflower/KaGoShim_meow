@@ -24,7 +24,7 @@
                     isUsingVueRouter: true,
                     mobileBreakpoint: 992,
                     brandImagePath: '/',
-                    brandImage: require('@/assets/logo.png'),
+                    brandImage: require('@/assets/caticon.png'),
                     brandImageAltText: 'vue-navigation-bar',
                     collapseButtonStyle: 'dark',
                     ariaLabelMainNav: 'Main Navigation',
