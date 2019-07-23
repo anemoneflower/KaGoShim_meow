@@ -4,7 +4,7 @@
     <div id="nav">
       <!-- <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link> | -->
-      <button @click="Link()"> {{loginLink}}</button>
+      <!-- <button @click="Link()"> {{loginLink}}</button> -->
       <!-- <router-link to="checkuser()">{{loginLink}}</router-link> -->
     </div>
     <router-view/>

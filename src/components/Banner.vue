@@ -176,6 +176,7 @@
 
 <style lang="scss">
     .vnb {
+        
         .button-pink {
             background: hsl(3, 89%, 82%);
 

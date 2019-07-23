@@ -102,7 +102,8 @@ Vue.use(CarouselPlugin)
     }
 
     .carousel{
-        width: 110rem;
+        /* width: 110rem; */
+        height: 30rem;
         overflow: hidden;
     }
     
