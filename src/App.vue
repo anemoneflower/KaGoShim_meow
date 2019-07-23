@@ -28,7 +28,8 @@ export default {
   },
   created: function(){
     console.log(this)
-    firebase.auth().onAuthStateChanged((user) =>{
+    //firebase.auth().onAuthStateChanged((user) =>{
+    firebase.auth().onAuthStateChanged((user) => {
       if(user){
         console.log("USER: ",user)
           if(user.emailVerified === true){

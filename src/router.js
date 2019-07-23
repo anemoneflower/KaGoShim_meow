@@ -68,10 +68,37 @@ export default new Router({
         {
             path: '/goods/add',
             name: 'new-goods',
-            component: () =>
-                import ('./components/NewGoods')
-        },
-        //Details of a goods item
+            component: () => import('./components/NewGoods.vue')
+          },
+          {
+              path: '/upload',
+              name: 'upload',
+              component: () => import('./components/Upload.vue')
+          },
+          {
+            path: '/posts',
+            name: 'community',
+            // route level code-splitting
+            // this generates a separate chunk (about.[hash].js) for this route
+            // which is lazy-loaded when the route is visited.
+            component: () => import(/* webpackChunkName: "about" */ './views/community.vue')
+          },
+          {
+            path: '/posts/add',
+            name: 'new-posts',
+            component: () => import('./components/newpost.vue')
+          },
+          {
+            path: '/gallery',
+            name: 'gallery',
+            component: () => import('./views/gallery.vue')
+          },
+          {
+            path: '/gallery/add',
+            name: 'new-gallery',
+            component: () => import('./components/galleryuploader.vue')
+          }
+          //Details of a goods item
         //   {
         //     path: '/goods/:item/:success?',
         //     name: 'view-good',

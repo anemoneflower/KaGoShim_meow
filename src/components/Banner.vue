@@ -55,7 +55,7 @@
                         {
                             type: 'link',
                             text: '게시판',
-                            path: '/',
+                            path: '/posts',
                             subMenuOptions: [
                                 {
                                     type: 'link',
@@ -65,7 +65,7 @@
                                 {
                                     type: 'link',
                                     text: '전체 글',
-                                    path: '/',
+                                    path: '/posts',
                                 },
                                 {
                                     type: 'link',
@@ -99,6 +99,11 @@
                                     path: '/goods',
                                 },
                             ]
+                        },
+                        {
+                            type: 'link',
+                            text: '갤러리',
+                            path: '/gallery',
                         },
                         {
                             type: 'link',
