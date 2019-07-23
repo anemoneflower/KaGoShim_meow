@@ -85,40 +85,82 @@
         saveContact () {
             console.log(this.$refs.pond.getFiles())
             console.log(this.$refs.pond.getFiles()[0].file)
+            console.log(this.$refs.pond.getFiles()[1].file)
+            console.log(this.$refs.pond.getFiles()[2].file)
+            console.log(this.$refs.pond.getFiles()[3].file)
+            const myfilearray = this.$refs.pond.getFiles()
+            console.log('From array: ', myfilearray[0].file)
+            console.log('From array: ', myfilearray[1].file)
+            console.log('From array: ', myfilearray[2].file)
+            console.log('From array: ', myfilearray[3].file)
 
-            var i;
-            for (i=0; i<getFiles().length; i++) {
+            myfilearray.forEach(el=>{
+                var uploadRef = storageRef.child('gallery/'+el.file.name)
+                uploadRef.put(el.file).
+                    then(snapshot=>{
+                        console.log('UPLOAD IMAGE')
+                        console.log('FILE CHECK:' , el.file)
+                        console.log('uploadRef: ', uploadRef)
+                        console.log('this', this)
+                        this.uploadTask = uploadRef.put(el.file)
+                                                .then(hi => {
+                                                    console.log('current el3: ', el.file)
+                                                    storageRef.child('gallery/'+el.file.name).getDownloadURL().then(url =>{
+                                                                this.downloadURL = url
+                                                                console.log("url OK: ", url)
+                                                                
+                                                                db.collection('Gallery').add({
+                                                                    downloadURL: this.downloadURL,
+                                                                    slug: this.generateUUID()
+                                                                })
+                                                                    .then(function (docRef) {
+                                                                    console.log('Document written with ID: ', docRef.id)
+                                                                    })
+                                                                    .catch(function (error) {
+                                                                    console.error('Error adding document: ', error)
+                                                                    })
+                                                                })  
+                                                            .catch(error => {
+                                                                console.log("Getting file url error222")
+                                                            })
+                                                }) 
+                    })
 
 
-                
-            }
 
 
-            var uploadRef = storageRef.child('gallery/'+this.$refs.pond.getFiles()[0].file.name)
-            uploadRef.put(this.$refs.pond.getFiles()[0].file).then(function(snapshot){
-            console.log('UPLOAD IMAGE')
+
+
             })
-            this.uploadTask = uploadRef.put(this.$refs.pond.getFiles()[0].file)
-                                    .then(hi => {
-                                        storageRef.child('gallery/'+this.$refs.pond.getFiles()[0].file.name).getDownloadURL().then(url =>{
-                                                    this.downloadURL = url
-                                                    console.log("url OK: ", url)
-                                                    
-                                                    db.collection('Gallery').add({
-                                                        downloadURL: this.downloadURL,
-                                                        slug: this.generateUUID()
-                                                    })
-                                                        .then(function (docRef) {
-                                                        console.log('Document written with ID: ', docRef.id)
-                                                        })
-                                                        .catch(function (error) {
-                                                        console.error('Error adding document: ', error)
-                                                        })
-                                                    })  
-                                                .catch(error => {
-                                                    console.log("Getting file url error222")
-                                                })
-                                    })
+
+            // var uploadRef = storageRef.child('gallery/'+(this.$refs.pond.getFiles()[i]).file.name)
+            //     uploadRef.put(this.$refs.pond.getFiles()[i].file).then(function(snapshot){
+            //     console.log('UPLOAD IMAGE')
+            //     })
+            //     this.uploadTask = uploadRef.put(this.$refs.pond.getFiles()[i].file)
+            //                             .then(hi => {
+            //                                 storageRef.child('gallery/'+(this.$refs.pond.getFiles()[i]).file.name).getDownloadURL().then(url =>{
+            //                                             this.downloadURL = url
+            //                                             console.log("url OK: ", url)
+                                                        
+            //                                             db.collection('Gallery').add({
+            //                                                 downloadURL: this.downloadURL,
+            //                                                 slug: this.generateUUID()
+            //                                             })
+            //                                                 .then(function (docRef) {
+            //                                                 console.log('Document written with ID: ', docRef.id)
+            //                                                 })
+            //                                                 .catch(function (error) {
+            //                                                 console.error('Error adding document: ', error)
+            //                                                 })
+            //                                             })  
+            //                                         .catch(error => {
+            //                                             console.log("Getting file url error222")
+            //                                         })
+            //                             }) 
+
+
+            
 
 
         },
