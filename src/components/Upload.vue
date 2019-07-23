@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import imgdb from '../firebasestorage.js'
+import {storage} from '../main'
 export default {
     name: 'upload',
     data(){
@@ -19,7 +19,7 @@ export default {
         uploadFile(){
             var fileVal = document.getElementById('input-file').value;
             console.log(fileVal)
-            const storageRef = imgdb.ref();
+            const storageRef = storage.ref();
             const horseRef=storageRef.child('horse.jpg');
             const file = file.item(0);
             const task = horseRef.put(file)

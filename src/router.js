@@ -78,6 +78,11 @@ export default new Router({
             path: '/gallery',
             name: 'gallery',
             component: () => import('./views/gallery.vue')
+          },
+          {
+            path: '/gallery/add',
+            name: 'new-gallery',
+            component: () => import('./components/galleryuploader.vue')
           }
           //Details of a goods item
         //   {

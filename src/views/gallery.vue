@@ -1,5 +1,6 @@
 <template>
   <div>
+    <router-link to="/gallery/add">갤러리 사진 추가</router-link>
     <gallery :images="images" :index="index" @close="index = null"></gallery>
     <div
       class="image"
@@ -11,26 +12,34 @@
   </div>
 </template>
 
+
 <script>
   import VueGallery from 'vue-gallery';
-  
+  import firebase from 'firebase'
+  import {db} from '../main'
+  import {storage} from '../main'
   export default {
-    data: function () {
+    name: 'mygallery',
+    components: {
+      'gallery': VueGallery
+    },
+    data () {
       return {
-        images: [
-          'https://dummyimage.com/800/ffffff/000000',
-          'https://dummyimage.com/1600/ffffff/000000',
-          'https://dummyimage.com/1280/000000/ffffff',
-          'https://dummyimage.com/400/000000/ffffff',
-        ],
+        images: [],
         index: null
       };
     },
 
-    components: {
-      'gallery': VueGallery
-    },
+    created: function() {
+      db.collection('Gallery').get().then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          this.images.push(doc.data().downloadURL)
+          console.log('Inserted url: ', doc.data().downloadURL)
+        })
+      })
+    }
   }
+  
 </script> 
 
 <style scoped>

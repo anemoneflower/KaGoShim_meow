@@ -1,42 +1,8 @@
  <template>
 
-  <section class="container">
-
-
-
-    
-    <h1>Add New Cat Item</h1>
-    <!-- <upload/>
-    <newupload/> -->
+  <section class="container">  
+    <h1>Add New Image</h1>
     <form @submit.prevent="saveContact">
-      <div class="field">
-
-        <label class="label">상품명</label>
-        <div class="control">
-          <input class="input" type="text" placeholder="상품명" v-model="itemName" required>
-        </div>
-      </div>
-
-      <!-- <div class="field">
-        <label class="label">Last Name</label>
-        <div class="control">
-          <input class="input" type="text" placeholder="Last Name" v-model="lastname" required>
-        </div>
-      </div> -->
-
-      <div class="field">
-        <label class="label">가격</label>
-        <div class="control">
-          <input class="input" type="text" placeholder="가격" v-model="price" required>
-        </div>
-      </div>
-
-      <div class="field">
-        <label class="label">상세 설명</label>
-        <div class="control">
-          <input class="input" type="text" placeholder="설명" v-model="shortIntro" required>
-        </div>
-      </div>
       <hr>
       <div class="filepond">
         <file-pond
@@ -47,24 +13,17 @@
             acceptedFileTypes="image/jpeg, image/png"
             v-bind:files="myFiles"
             v-on:init="handleFilePondInit"/>
-            <!-- <button @click="checkfilepond">Upload Image</button> -->
       </div>
-
       <hr>
-      
-
       <div class="field">
         <div class="control">
-          
           <button type="submit" class="button is-link">Submit</button>
         </div>
       </div>
-
     </form>
   </section>
-
 </template>
- 
+
  <script>
     // Import Vue FilePond
     import vueFilePond from 'vue-filepond'
@@ -90,72 +49,62 @@
     var storageRef = storage.ref();
 
     export default {
-      name: 'new-item',
+      name: 'new-gallery',
       data () {
         return {
           myFiles: [],
           uploadTask:'',
           downloadURL: '',
           imgname: '',
-          itemName: null,
-          price: null,
-          shortIntro: null
         }
       },
 
       methods: {
          handleFilePondInit: function() {
             console.log('FilePond has initialized');
-            
             // FilePond instance methods are available on `this.$refs.pond`
         },
         checkfilepond(){
             console.log(this.$refs.pond.getFiles())
             console.log(this.$refs.pond.getFiles()[0].file)
-            var uploadRef = storageRef.child('test/'+this.$refs.pond.getFiles()[0].file.name)
+            var uploadRef = storageRef.child('gallery/'+this.$refs.pond.getFiles()[0].file.name)
             uploadRef.put(this.$refs.pond.getFiles()[0].file).then(function(snapshot){
             console.log('UPLOAD IMAGE')
             })
             this.uploadTask = uploadRef.put(this.$refs.pond.getFiles()[0].file)
                                     .then(hi => {
-                                        storageRef.child('test/'+this.$refs.pond.getFiles()[0].file.name).getDownloadURL().then(url =>{
+                                        storageRef.child('gallery/'+this.$refs.pond.getFiles()[0].file.name).getDownloadURL().then(url =>{
                                                     this.downloadURL = url
                                                     console.log("url OK: ", url)})
             
                                                 .catch(error => {
-                                                    console.log("Getting file url error")
+                                                    console.log("Getting file url error1111")
                                                 })
                                     })
-            //console.log("HHHH", this.uploadTask.snapshot.ref.getDownloadURL())
-        
-            // this.uploadTask.snapshot.ref.
-            // storageRef.child('test/'+this.$refs.pond.getFiles()[0].file.name).getDownloadURL().then(url =>{
-            //                                         this.downloadURL = url
-            //                                         console.log("url OK: ", url)})
-            
-            //                                     .catch(error => {
-            //                                         console.log("Getting file url error")
-            //                                     })
-
-            // this.$router.replace('/goods')
         },
         saveContact () {
             console.log(this.$refs.pond.getFiles())
             console.log(this.$refs.pond.getFiles()[0].file)
-            var uploadRef = storageRef.child('test/'+this.$refs.pond.getFiles()[0].file.name)
+
+            var i;
+            for (i=0; i<getFiles().length; i++) {
+
+
+                
+            }
+
+
+            var uploadRef = storageRef.child('gallery/'+this.$refs.pond.getFiles()[0].file.name)
             uploadRef.put(this.$refs.pond.getFiles()[0].file).then(function(snapshot){
             console.log('UPLOAD IMAGE')
             })
             this.uploadTask = uploadRef.put(this.$refs.pond.getFiles()[0].file)
                                     .then(hi => {
-                                        storageRef.child('test/'+this.$refs.pond.getFiles()[0].file.name).getDownloadURL().then(url =>{
+                                        storageRef.child('gallery/'+this.$refs.pond.getFiles()[0].file.name).getDownloadURL().then(url =>{
                                                     this.downloadURL = url
                                                     console.log("url OK: ", url)
                                                     
-                                                    db.collection('MarketItemList').add({
-                                                        itemName: this.itemName,
-                                                        price: this.price,
-                                                        shortIntro: this.shortIntro,
+                                                    db.collection('Gallery').add({
                                                         downloadURL: this.downloadURL,
                                                         slug: this.generateUUID()
                                                     })
@@ -165,37 +114,13 @@
                                                         .catch(function (error) {
                                                         console.error('Error adding document: ', error)
                                                         })
-                                                    
-                                                    
-                                                    
-                                                    })
-                                                    
-            
+                                                    })  
                                                 .catch(error => {
-                                                    console.log("Getting file url error")
+                                                    console.log("Getting file url error222")
                                                 })
                                     })
 
 
-
-
-
-
-
-        //   firestore.collection('MarketItemList').add({
-        //     itemName: this.itemName,
-        //     price: this.price,
-        //     shortIntro: this.shortIntro,
-        //     downloadURL: this.downloadURL,
-        //     slug: this.generateUUID()
-        //   })
-        //     .then(function (docRef) {
-        //       console.log('Document written with ID: ', docRef.id)
-        //     })
-        //     .catch(function (error) {
-        //       console.error('Error adding document: ', error)
-        //     })
-            //this.$router.replace('/goods')
         },
         generateUUID () {
           let d = new Date().getTime()
@@ -260,5 +185,4 @@
     left:0;
      z-index: 3;
   }
-
 </style>
