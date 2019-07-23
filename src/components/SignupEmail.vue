@@ -114,35 +114,43 @@ export default {
 </script>
 
 <style scoped>
-
+@font-face { font-family: 'LotteMartHappy'; font-style: normal; font-weight: 400; src: url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartHappy/LotteMartHappyMedium.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartHappy/LotteMartHappyMedium.woff') format('woff'); } @font-face { font-family: 'LotteMartHappy'; font-style: normal; font-weight: 700; src: url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartHappy/LotteMartHappyBold.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartHappy/LotteMartHappyBold.woff') format('woff'); } .lottemarthappy * { font-family: 'LotteMartHappy', sans-serif; }
     button {
+        font-family:'LotteMartHappy', normal;
         margin: 40px;
     }
 
     .title-email{
+        font-family:'LotteMartHappy', normal;
         margin-top: 10%;
         margin-bottom: 30px;
     }
     .inputs{
-    margin-left: 25%;
-    margin-top: 10px;
-    background: #ffd9df;
+        font-family:'LotteMartHappy', normal;
+        margin-left: 25%;
+        margin-top: 10px;
+        background: #ffd9df;
     }
     .inputs::placeholder{
+        font-family:'LotteMartHappy', normal;
         font-style: italic;
         color: #aba9a9
     }
     .title-pw{
+        font-family:'LotteMartHappy', normal;
         margin-top: 50px;
         margin-bottom: 20px;
     }
     .pwinputs{
+        font-family:'LotteMartHappy', normal;
         background: #ffd9df;
     }
     .signbtn{
+        font-family:'LotteMartHappy', normal;
         margin: 5% 10px 20px 20px;
     }
     .pwconfiglabel{
+        font-family:'LotteMartHappy', normal;
         margin-top: 3%;
     }
 </style>
