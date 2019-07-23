@@ -229,6 +229,12 @@
                             text: 'mypage',
                             path: '/mypage',
                             class: 'button-pink'
+                        },
+                        {
+                            type: 'button',
+                            text: 'logout',
+                            path: '/logout',
+                            class: 'button-pink'
                         }
                     ]
                 }
