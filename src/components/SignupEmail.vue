@@ -1,18 +1,44 @@
 <template>
     <div class="signupEmail">
-    
-        <h4>이메일이다냥</h4>
-        <input v-model="email" type="text">
-    
-        <h4>
-            비밀번호6자리이상이다냥
-            <button type="password" @click="switchVisibility()"> visible </button>
-        </h4>
-        <input :type="passwordFieldType" v-model="password">
+
+        <b-form-group
+            :invalid-feedback="invalidFeedback_email"
+            :valid-feedback="validFeedback_email"
+            :state="state_email"
+            >
+            <h4 class="title-email">이메일이뭐냥?</h4>
+            <b-form-input class= "inputs border-secondary" style="width: 50%" :state="state_email" type="email" v-model="email" size="lg" placeholder="NangNang@meow.com"></b-form-input>
+        </b-form-group>
+
+        <b-form-group
+            :invalid-feedback="invalidFeedback_pwd"
+            :state="state_pwd">
+            <h4 class="title-pw">비밀번호넣으라냥!</h4>
+            <b-input-group 
+                class= "inputs" style="width: 50%" size="lg">
+                <b-form-input :state="state_pwd" class="pwinputs border-secondary" :type="passwordFieldType" v-model="password"></b-form-input>
+                <b-input-group-append>
+                    <b-button class="m-0 shadow-none" @click="switchVisibility()" type="password" variant="dark">Visible</b-button>
+                </b-input-group-append>
+            </b-input-group>
+        </b-form-group>
+        <b-form-group
+            :invalid-feedback="invalidFeedback_pwd_check"
+            :valid-feedback="validFeedback_pwd_check"
+            :state="state_pwd_check">
+            <label class="pwconfiglabel" for="pwgroup"> 비밀번호 확인하라냥! </label>
+            <b-input-group id="pwgroup" class= "inputs" style="width: 50%" size="lg">
+                <b-form-input :state="state_pwd_check" class="pwinputs border-secondary" :type="passwordFieldType_check" v-model="password_check"></b-form-input>
+                <b-input-group-append>
+                    <b-button class="m-0 shadow-none" @click="switchVisibility_check()" type="password_check" variant="dark">Visible</b-button>
+                </b-input-group-append>
+            </b-input-group>
+        </b-form-group>
     
         <div>
-            <button @click="SignUp()">가입하냥?</button>
+            <b-button class="signbtn" size="lg" variant="dark" @click="SignUp()">가입하냥?!</b-button>
         </div>
+
         <h2> {{verificationmsg}} </h2>
     
     </div>
@@ -22,11 +48,40 @@
 import firebase from 'firebase'
 export default {
     name: 'SignupEmail',
+    computed: {
+        state_email(){
+            var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(this.email);
+        },
+        invalidFeedback_email(){
+            return this.state_email === false ? '이곳으로 인증 메일을 보낸다냥! 제대로 된 이메일을 넣으라냥 @.@' : ''
+        },
+        validFeedback_email(){
+            return this.state_email === true ? '잘했다냥 ^*^' : ''
+        },
+        state_pwd(){
+            return this.password.length > 6;
+        },
+        invalidFeedback_pwd(){
+            return this.state_pwd === false ? '비밀번호는 6자리 이상 넣어야한다냥!' : ''
+        },
+        state_pwd_check(){
+            return (this.password === this.password_check) && (this.password.length !== 0)
+        },
+        invalidFeedback_pwd_check(){
+            return this.state_pwd_check === false ? '비밀번호를 다시 확인하라냥!!!!!!' : ''
+        },
+        validFeedback_pwd_check(){
+            return this.state_pwd_check === true ? '잘했다냥 ^*^' : ''
+        }
+    },
     data() {
         return {
             email: '',
             password: '',
+            password_check: '',
             passwordFieldType: 'password',
+            passwordFieldType_check: 'password',
             verificationmsg: ''
         }
     },
@@ -49,6 +104,9 @@ export default {
         },
         switchVisibility(){
             this.passwordFieldType = this.passwordFieldType==='password' ? 'text' : 'password'
+        },
+        switchVisibility_check(){
+            this.passwordFieldType_check = this.passwordFieldType_check==='password' ? 'text' : 'password'
         }
     }
 
@@ -56,17 +114,36 @@ export default {
 </script>
 
 <style scoped>
-h4 {
-    margin: 20px;
-}
 
-button {
-    margin: 40px;
-}
+    button {
+        margin: 40px;
+    }
 
-button:hover{
-    background: #6666
-}
-
+    .title-email{
+        margin-top: 10%;
+        margin-bottom: 30px;
+    }
+    .inputs{
+    margin-left: 25%;
+    margin-top: 10px;
+    background: #ffd9df;
+    }
+    .inputs::placeholder{
+        font-style: italic;
+        color: #aba9a9
+    }
+    .title-pw{
+        margin-top: 50px;
+        margin-bottom: 20px;
+    }
+    .pwinputs{
+        background: #ffd9df;
+    }
+    .signbtn{
+        margin: 5% 10px 20px 20px;
+    }
+    .pwconfiglabel{
+        margin-top: 3%;
+    }
 </style>
 
