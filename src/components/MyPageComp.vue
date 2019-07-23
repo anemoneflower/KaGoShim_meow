@@ -1,20 +1,30 @@
 <template>
     <div class="mypagecomp">
         <h1> MYPAGE </h1>
-        <button @click="logout"> Logout</button>
+        <b-img v-bind="mainProps" thumbnail fluid :src='profimg' rounded="circle" alt="Circle image"></b-img>
+        
+        <img class="change-photo" src="@/assets/camera.png" alt="change photo"/>
     </div>
 </template>
 <script>
 import firebase from 'firebase';
 export default {
     name: 'mypagecomp',
-    methods: {
-        logout(){
-            firebase.auth().signOut().then(()=>{
-                this.$router.replace('login')
-            })
+    data(){
+        return{
+            mainProps: { width: 150, height: 150, class: 'm1' },
+            profimg: "https://placekitten.com/200/200"
         }
+    },
+    methods: {
+        
     }
     
 }
 </script>
+<style scoped>
+    .change-photo{
+        width: 40px;
+        height: 30px;
+    }
+</style>
