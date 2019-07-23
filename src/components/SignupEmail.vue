@@ -18,7 +18,7 @@
                 class= "inputs" style="width: 50%" size="lg">
                 <b-form-input :state="state_pwd" class="pwinputs border-secondary" :type="passwordFieldType" v-model="password"></b-form-input>
                 <b-input-group-append>
-                    <b-button class="m-0" @click="switchVisibility()" type="password" variant="dark">Visible</b-button>
+                    <b-button class="m-0 shadow-none" @click="switchVisibility()" type="password" variant="dark">Visible</b-button>
                 </b-input-group-append>
             </b-input-group>
         </b-form-group>
@@ -30,7 +30,7 @@
             <b-input-group id="pwgroup" class= "inputs" style="width: 50%" size="lg">
                 <b-form-input :state="state_pwd_check" class="pwinputs border-secondary" :type="passwordFieldType_check" v-model="password_check"></b-form-input>
                 <b-input-group-append>
-                    <b-button class="m-0" @click="switchVisibility_check()" type="password_check" variant="dark">Visible</b-button>
+                    <b-button class="m-0 shadow-none" @click="switchVisibility_check()" type="password_check" variant="dark">Visible</b-button>
                 </b-input-group-append>
             </b-input-group>
         </b-form-group>

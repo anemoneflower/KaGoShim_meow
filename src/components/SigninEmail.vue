@@ -2,13 +2,13 @@
     <div class="signinEmail">
     
         <h4 class="titles emailinput">이메일이다냥</h4>
-        <b-form-input class= "inputs border-secondary" style="width: 50%" type="email" v-model="email" size="lg" placeholder="NangNang@meow.com"></b-form-input>
+        <b-form-input class= "inputs border-secondary shadow-none" style="width: 50%" type="email" v-model="email" size="lg" placeholder="NangNang@meow.com"></b-form-input>
     
         <h4 class="titles pwinput">비밀번호다냥</h4>
         <b-input-group class= "inputs" style="width: 50%" size="lg">
-            <b-form-input class="pwinputs border-secondary" :type="passwordFieldType" v-model="password"></b-form-input>
+            <b-form-input class="pwinputs border-secondary shadow-none" :type="passwordFieldType" v-model="password"></b-form-input>
             <b-input-group-append>
-                <b-button class="m-0" @click="switchVisibility()" type="password" variant="dark">Visible</b-button>
+                <b-button class="m-0 shadow-none" @click="switchVisibility()" type="password" variant="dark">Visible</b-button>
             </b-input-group-append>
         </b-input-group>
     
@@ -17,9 +17,9 @@
             <b-button class="signbtn" variant="dark" @click="SignUp()">회원가입하라냥!</b-button>
         </div>
 
-        <b-button @click="GoogleSignIn()" class="social-button">
+        <button @click="GoogleSignIn()" class="social-button">
             <img src="../assets/google_1.png"/>
-        </b-button>
+        </button>
     
     </div>
 </template>
@@ -134,4 +134,5 @@ export default {
     .signbtn{
         margin: 5% 10px 20px 20px;
     }
+    
 </style>
