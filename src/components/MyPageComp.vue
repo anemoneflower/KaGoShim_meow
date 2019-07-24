@@ -12,12 +12,9 @@
                         <img class="change-photo" src="@/assets/camera.png" alt="change photo"/>
                     </label>
                 </b-col>
-                <b-col v-if="change === false" cols="8">
-                    <b-row align-h="end">
-                        <b-button @click="if_change()" size="sm" variant="light">수정할거냥?</b-button>
-                    </b-row>
+                <b-col v-if="change === false" cols="8" class="show-profile">
                     <b-row>
-                        <h2> {{displayName}} 집사! </h2>
+                        <h2 class="show-name"> {{displayName}} </h2>
                     </b-row>
 
                     <b-row>
@@ -27,14 +24,12 @@
                     <b-row v-if="(emailVerified === false)">
                         <b-col> 이메일 인증이 안되었다냥! 인증해달라냥!! </b-col>
                     </b-row>
-                    <b-row>
-                        <h4> 전화번호: </h4>
-                        <h4 v-if="phoneNumber !== ''"> {{phoneNumber}} </h4>
-                        <h4 v-else> ``` </h4>
+                    <b-row align-h="end">
+                        <b-button @click="if_change()" class="button-change" size="sm" variant="secondary">수정할거냥?</b-button>
                     </b-row>
                 </b-col>
-                <b-col v-else>
-                    <b-row>
+                <b-col v-else class="change-mypage">
+                    <b-row class="name-change">
                         <b-col cols="4">
                             <h4>뭐라고 부르냥?</h4>
                         </b-col>
@@ -54,14 +49,6 @@
                                 >
                                 <b-form-input class= "inputs border-secondary" :state="state_email" type="email" v-model="new_email" :placeholder="email"></b-form-input>
                             </b-form-group>
-                        </b-col>
-                    </b-row>
-                    <b-row>
-                        <b-col cols="4">
-                            <h4>전화번호다냥! </h4>
-                        </b-col>
-                        <b-col cols="8">
-                            <b-form-input class= "border-secondary" style="width: 50%" v-model="phoneNumber" :placeholder="phoneNumber"></b-form-input>
                         </b-col>
                     </b-row>
                     <b-row>
@@ -106,7 +93,7 @@
                 </b-col>
             </b-row>
             <b-row v-if="change !== false" align-h="center">
-                    <b-button @click="save()" size="sm" variant="light">저장하면되냥?</b-button>
+                    <b-button @click="save()" size="sm" variant="secondary">저장하면되냥?</b-button>
             </b-row>
         </b-container>
     </div>
@@ -153,7 +140,6 @@ export default {
             email: '',
             new_email: '',
             emailVerified: '',
-            phoneNumber: null,
             change: false,
             user: '',
             pwUpdate: false,
@@ -179,10 +165,6 @@ export default {
             if(this.user.emailVerified === false){
                 console.log('email not verified')
             }
-        }
-        if(this.user.phoneNumber !== null){
-            // console.log('user has phone: ', user.phoneNumber)
-            this.phoneNumber = this.user.phoneNumber
         }
         this.emailVerified = this.user.emailVerified
     },
@@ -213,8 +195,9 @@ export default {
         },
         save(){
             this.user.updateProfile({
-                displayName: this.name,
-                phoneNumber: this.phoneNumber
+                displayName: this.displayName
+            }).then(()=>{
+                console.log('update profile succeed')
             })
             if(this.state_pwd_check){
                 this.user.updatePassword(this.password).then(function(){
@@ -256,6 +239,23 @@ export default {
     }
     h1{
         font-family: 'LotteMartHappy';
+        margin: 50px 0px 30px 0px;
+    }
+    .change-mypage{
+        padding: 10px;
+    }
+    .name-change{
+        margin-bottom: 18px;
+    }
+    .show-profile{
+        margin-left: 20px;
+    }
+    .show-name{
+        margin-bottom: 15px;
+        font-weight: bold;
+    }
+    .button-change{
+        margin-bottom: 15px;
     }
 
 </style>
