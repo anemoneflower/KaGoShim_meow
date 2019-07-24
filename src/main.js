@@ -8,11 +8,15 @@ import PortalVue from 'portal-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import VueFirestore from 'vue-firestore'
+import VueFullPage from 'vue-fullpage.js'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 Vue.use(BootstrapVue)
 Vue.use(VueFirestore)
 Vue.use(PortalVue)
 
+Vue.use(VueFullPage);
 
 Vue.config.productionTip = false
 
@@ -57,7 +61,13 @@ export default firebaseApp.firestore();
 firebase.auth().onAuthStateChanged(function(user) {
         if (!app) {
             app = new Vue({
+                created(){
+                    AOS.init();
+                },
+                el: '#app',
                 router,
+                components: {App},
+                template: '<App/>',
                 render: h => h(App)
             }).$mount('#app')
         }

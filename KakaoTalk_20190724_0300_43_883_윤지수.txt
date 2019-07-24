@@ -1,0 +1,40 @@
+윤지수 님과 카카오톡 대화
+저장한 날짜 : 2019-07-24 03:00:43
+
+--------------- 2019년 7월 8일 월요일 ---------------
+[윤지수] [오후 4:56] keytool -exportcert -alias androiddebugkey -keystore ~/.android/debug.keystore | openssl sha1 -binary | openssl base64
+[윤지수] [오후 5:06] kOSjFFOsZYQ9RbOxNy/fTeFFfgs=
+[윤지수] [오후 5:23] keytool -exportcert -alias YOUR_RELEASE_KEY_ALIAS -keystore YOUR_RELEASE_KEY_PATH | openssl sha1 -binary | openssl base64
+[윤지수] [오후 9:40] 사진
+[윤지수] [오후 10:26] 사진
+[윤지수] [오후 10:26] 사진
+[윤지수] [오후 10:27] 사진
+--------------- 2019년 7월 9일 화요일 ---------------
+[윤지수] [오전 5:04] implementation 'com.mikhaellopez:circularimageview:4.0.1'
+--------------- 2019년 7월 10일 수요일 ---------------
+[윤지수] [오후 2:47] 사진
+[윤지수] [오후 2:47] 사진
+[윤지수] [오후 9:59] 7.2 신상소식 - 에스쁘아, 이니스프리, 베네피트, 디올 
+ http://naver.me/x2Eno2cB
+[윤지수] [오후 9:59] 7.2 신상소식 - 에스쁘아, 이니스프리, 베네피트, 디올 
+ http://naver.me/x2Eno2cB
+--------------- 2019년 7월 14일 일요일 ---------------
+[윤지수] [오전 12:23] https://dzone.com/articles/create-a-database-android-application-in-android-s
+--------------- 2019년 7월 18일 목요일 ---------------
+[윤지수] [오전 12:04] https://www.youtube.com/watch?v=b_sZiPXezSo&t=146s
+[윤지수] [오전 12:04] 21:19
+[윤지수] [오전 12:04] vuetutorial1
+[윤지수] [오후 2:18] css animation banner slideup
+--------------- 2019년 7월 19일 금요일 ---------------
+[윤지수] [오전 12:30] 사진
+[윤지수] [오전 12:33] 웹사이트 레이아웃 https://colibriwp.com/blog/website-layout-design-ideas/
+--------------- 2019년 7월 20일 토요일 ---------------
+[윤지수] [오전 1:13] Contacts tutorial with firebase & vue
+
+https://scotch.io/tutorials/getting-started-with-firebase-cloud-firestore-build-a-vue-contact-app
+[윤지수] [오전 1:51] 한글폰트 
+https://noonnu.cc/index
+[윤지수] [오전 2:33] 슬라이드쇼 애니메이션
+[윤지수] [오전 2:33] https://vuejsexamples.com/so-sexy-slider-animation-effect-with-vue-js/
+--------------- 2019년 7월 21일 일요일 ---------------
+[윤지수] [오후 4:31] https://github.com/vuejs/awesome-vue#official-resources
