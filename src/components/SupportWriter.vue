@@ -86,10 +86,14 @@ export default {
             // FilePond instance methods are available on `this.$refs.pond`
         },
         addSupport (title, image, amount, body) {
+          var earn=0
             // console.log(this.$refs.pond.getFiles())
             const createdAt = new Date()
             image = this.$refs.pond.getFiles()[0].file
-            console.log(image)
+            // console.log(image)
+            // console.log(body)
+            // console.log(body.replace(/(\r\n|\n|\r)/gm, "<br>"))
+            body = body.replace(/(\r\n|\n|\r)/gm, "<br>")
             var uploadRef = storageRef.child('Support/'+this.title)
             var imgurl
             uploadRef.put(image).then(success => 
@@ -97,12 +101,12 @@ export default {
                 .then(url =>{
                     imgurl = url
                     console.log("url OK: ", imgurl)
-                    db.collection('Support').doc(this.title).set({ title, amount, body, createdAt, imgurl })
+                    db.collection('Support').doc(this.title).set({ title, amount, body, createdAt, imgurl, earn })
                     // Clear values
                     this.name = ''
                     this.image = ''
                     this.body = ''
-                    console.log("Router!!")
+                    // console.log("Router!!")
                     this.$router.replace('support')
                     
                   })
