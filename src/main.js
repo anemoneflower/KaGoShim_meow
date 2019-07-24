@@ -8,7 +8,8 @@ import PortalVue from 'portal-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import VueFirestore from 'vue-firestore'
-
+import ImageUploader from 'vue-image-upload-resize'
+Vue.use(ImageUploader);
 Vue.use(BootstrapVue)
 Vue.use(VueFirestore)
 Vue.use(PortalVue)
