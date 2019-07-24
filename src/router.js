@@ -98,11 +98,11 @@ export default new Router({
             name: 'new-gallery',
             component: () => import('./components/galleryuploader.vue')
           },
-          {
-            path: '/test',
-            name: 'test',
-            component: () => import('./views/test.vue')
-          }
+          // {
+          //   path: '/test',
+          //   name: 'test',
+          //   component: () => import('./views/test.vue')
+          // }
           //Details of a goods item
         //   {
         //     path: '/goods/:item/:success?',

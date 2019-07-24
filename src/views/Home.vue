@@ -2,7 +2,6 @@
     <div class="homecontainer">
         <full-page ref="fullpage" :options="options" id="fullpage">
             <div class="section">
-              <h1 data-aos="flip-up" data-aos-duration="3000">>AOS test</h1>
               <h1 class="animated bounceInDown delay-0.5s myeffect">카고쉼에 오신 것을 </h1>
               <h1 class="animated slideInLeft delay-0.5s myeffect">환영합니다 </h1>
               <a href="/#/about" class="btn animated fadeIn delay-0.5s myeffect"> 더 알아보기 </a>
@@ -19,17 +18,17 @@
               <b-container fluid class="bv-example-row">
                 <b-row>
                   <b-col>
-                    <h1 data-aos="flip-up" data-aos-duration="3000"> 오늘의 냥이비디오당 </h1>
+                    <h2> 오늘의 냥이비디오당 </h2>
                     <iframe 
                       width="560" height="315" src="https://www.youtube.com/embed/2gCiWrSm-04" 
                       frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
                     </iframe>
                   </b-col>
                   <b-col>
-                    <h1 data-aos="flip-up" data-aos-duration="3000">핫한 냥수다~</h1>
+                    <h2>핫한 냥수다~</h2>
                     </b-col>
                   <b-col>
-                    <h1>오늘의 냥템</h1>
+                    <h2>오늘의 냥템</h2>
                   </b-col>
                 </b-row>
               </b-container>
