@@ -29,14 +29,6 @@ import * as firebase from "firebase/app"
 import "firebase/auth"
 
 
-
-
-
-
-// import BootstrapVue from 'bootstrap-vue'
-
-// Vue.use(BootstrapVue)
-
 export default {
     name: 'SigninEmail',
     data() {
