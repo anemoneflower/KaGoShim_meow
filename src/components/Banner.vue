@@ -1,10 +1,9 @@
 <template>
-    <vue-navigation-bar v-if="loginLink === 'login'" :options="navbarData_login" >
-    </vue-navigation-bar>    
-    <vue-navigation-bar v-else :options="navbarData_mypage" >
-    </vue-navigation-bar>    
+     
     <div class="navbarclass">
-        <vue-navigation-bar :options="navbarData"  >
+        <vue-navigation-bar v-if="loginLink === 'login'" :options="navbarData_login" >
+        </vue-navigation-bar>    
+        <vue-navigation-bar v-else :options="navbarData_mypage" >
         </vue-navigation-bar>   
     </div>
      
@@ -288,12 +287,8 @@
   @font-face { font-family: 'LeeHyunJi'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/LeeHyunJi.woff') format('woff'); font-weight: normal; font-style: normal; }
     *{
         font-family: 'LeeHyunJi', cursive;
-        font-size: 30px;
-
+        font-size: 23px;
     }
-    // .navbarclass{
-        
-    // }
     .vnb {
         
         .button-pink {
