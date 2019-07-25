@@ -184,6 +184,9 @@
 
 <style lang="scss" scoped>
 
+#contactspage{
+  
+}
 .temp-class{
   font-size: 4rem;
 }

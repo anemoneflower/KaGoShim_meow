@@ -1,6 +1,6 @@
 <template>
     <div class="helloworld">
-        <h4>Welcome!!?</h4>
+        <h4>환영한다냥 집사~</h4>
     </div>
 </template>
 

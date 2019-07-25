@@ -3,6 +3,11 @@
     </vue-navigation-bar>    
     <vue-navigation-bar v-else :options="navbarData_mypage" >
     </vue-navigation-bar>    
+    <div class="navbarclass">
+        <vue-navigation-bar :options="navbarData"  >
+        </vue-navigation-bar>   
+    </div>
+     
 </template>
 
 <script>
@@ -281,12 +286,22 @@
 </script>
 
 <style lang="scss">
+  @font-face { font-family: 'LeeHyunJi'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/LeeHyunJi.woff') format('woff'); font-weight: normal; font-style: normal; }
+    *{
+        font-family: 'LeeHyunJi', cursive;
+        font-size: 30px;
+
+    }
+    // .navbarclass{
+        
+    // }
     .vnb {
+        
         .button-pink {
-            background: hsl(3, 89%, 82%);
+            background: hsl(4, 90%, 88%);
 
             &:hover {
-                background: darken(rgb(156, 132, 131), 10%);
+                background: darken(rgb(221, 188, 187), 10%);
             }
         }
     }

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="outer">
     <b-carousel
       id="carousel-1"
       v-model="slide"
@@ -29,7 +29,10 @@
         img-width="1024px"
       img-height="480px"
         >
-        <h1>고양이 달력은 어떄!</h1>
+        <div class="topcent">
+            <h1>고양이 달력은 어떄!</h1>
+        </div>
+        
       </b-carousel-slide>
 
       <!-- Slides with image only -->
@@ -89,10 +92,25 @@ Vue.use(CarouselPlugin)
 <style scoped>
     @font-face { font-family: 'Goyang'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Goyang.woff') format('woff'); font-weight: normal; font-style: normal; }
     @font-face { font-family: 'LeeHyunJi'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/LeeHyunJi.woff') format('woff'); font-weight: normal; font-style: normal; }
+
+    *{
+      text-align: left;
+      vertical-align: text-top;
+    }
+    /* .outer{
+      vertical-align: text-top;
+    }
+    .topcent {
+        vertical-align: text-top;
+    } */
+    .outer{
+      width: 100%
+    }
     h1 {
         font-family: 'LeeHyunJi', cursive;
         font-size: 100px;
-        margin: 30px 0;
+        margin: 400px 0;
+        /* vertical-align: text-top; */
     }
 
     p {
@@ -103,8 +121,8 @@ Vue.use(CarouselPlugin)
     }
 
     .carousel{
-        /* height:  */
-        /* overflow: hidden; */
+        height:  10rem;
+        overflow: hidden;
     }
     
     .carousel-text{
