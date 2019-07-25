@@ -120,7 +120,7 @@ export default {
   .homecontainer{
     /* width: 80%;
     margin:auto; */
-    background-color: #eee;
+    background-color: rgb(255, 255, 255);
   }
   .myeffect{
     animation-duration: 3s;
@@ -129,6 +129,7 @@ export default {
   h1 {
     font-size: 4rem;
     font-weight: 800;
+    color: #685642;
 
   }
 
@@ -138,7 +139,8 @@ export default {
     text-decoration: none;
     padding: 0.6rem 2rem;
     font-size: 1.5rem;
-    background: hsl(4, 90%, 88%);
+    background: #B7C68B;
+    /* background: hsl(4, 90%, 88%); */
     border-radius: 30px;
     margin-top: 5rem;
     transition-property: background;
@@ -147,7 +149,7 @@ export default {
   }
 
   .btn:hover{
-    background: rgb(221, 188, 187);
+    background: #DED29E;
     color: #fff;
   }
 

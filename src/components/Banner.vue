@@ -1,5 +1,5 @@
 <template>
-     
+
     <div class="navbarclass">
         <vue-navigation-bar v-if="loginLink === 'login'" :options="navbarData_login" >
         </vue-navigation-bar>    
@@ -180,7 +180,7 @@
                                 {
                                     type: 'link',
                                     text: '전체 글',
-                                    path: '/',
+                                    path: '/posts',
                                 },
                                 {
                                     type: 'link',
@@ -214,6 +214,11 @@
                                     path: '/goods',
                                 },
                             ]
+                        },
+                        {
+                            type: 'link',
+                            text: '갤러리',
+                            path: '/gallery',
                         },
                         {
                             type: 'link',
@@ -285,17 +290,18 @@
 
 <style lang="scss">
   @font-face { font-family: 'LeeHyunJi'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/LeeHyunJi.woff') format('woff'); font-weight: normal; font-style: normal; }
-    *{
+    *{        
         font-family: 'LeeHyunJi', cursive;
         font-size: 23px;
     }
     .vnb {
+        background: #fff;
         
         .button-pink {
-            background: hsl(4, 90%, 88%);
+            background: #B7C68B;
 
             &:hover {
-                background: darken(rgb(221, 188, 187), 10%);
+                background: darken(#DED29E	, 10%);
             }
         }
     }
