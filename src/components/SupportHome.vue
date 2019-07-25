@@ -1,86 +1,38 @@
 <template>
 
     <div class="supporthome">
-        <router-link to="/supportwriter">Write new Support</router-link>
-        <li v-for="n in parseInt(support.length/3)" v-bind:key=n>
-            <b-card-group columns class="mx-auto md-1 m-5" style="width: 60%">
-                <div  v-for="i in 3" v-bind:key=i>
-                    <b-card v-if="(n+i-2) < support.length" style="height: 70px" class="mr-3 no-gutters" :title=support[n+i-2].title :img-src=support[n+i-2].imgurl img-alt="Image" img-top>
-                        <b-card-text>
-                            {{support[n+i-2].body.slice(0, 20)}}...
+        <h1> 예쁜 우리들을 후원하라냥! </h1>
+        <h3> 우리 1002-554-820807 (카고쉼)</h3>
+        <h5> 보내는 사람에 키워드를 적어주면 원하는 곳에 후원하겠다냥! </h5>
+        <h5> 예를 들면... "아름관"(+"이름")</h5>
+        <b-card 
+            v-for="k in support.length" v-bind:key=k 
+            no-body
+            fluid
+            class="mx-auto md-1 m-5 overflow-hidden border-dark" 
+            style="width: 60%">
+            <b-row no-gutters>
+                <b-col>
+                    <b-card-body :title=support[k-1].title>
+                        <b-progress :max="parseInt(support[k-1].amount)" class="m-4">
+                            <b-progress-bar variant="success" :value="parseInt(support[k-1].earn)" :label="`${((parseInt(support[k-1].earn) / parseInt(support[k-1].amount)) * 100).toFixed(2)}%`"></b-progress-bar>
+                        </b-progress>
+                        <b-card-text v-for="b in support_body[k-1]" v-bind:key=b>
+                            {{b}}
                         </b-card-text>
-                        <b-card-text class="small text-muted">Progress</b-card-text>
-                    </b-card>
-                </div>
-            </b-card-group>
-<!-- v-for="(supportcomp, idx) in support" v-bind:key="supportcomp.title"> -->
+                    </b-card-body>
+                </b-col>
+                <!-- <b-col cols="2"></b-col> -->
+                <b-col cols="3">
+                    <b-card-img :src=support[k-1].imgurl class="m-0"/>
+                </b-col>
+            </b-row>
+        </b-card>
 
-            <!-- <b-card :title=supportcomp.title :img-src=imgpath[supportcomp.title] img-alt="Image" img-left class="mr-3">
-                <b-card-text>
-                    {{supportcomp.body}}
-                </b-card-text>
-                <b-card-text class="small text-muted">Progress</b-card-text>
-            </b-card> -->
-        </li>
-        <b-card-group v-if="support.length%3 !== 0" columns class="mx-auto md-1 m-5" style="width: 60%">
-                <div  v-for="i in 3" v-bind:key=i>
-                    <b-card v-if="(parseInt(support.length/3)*3+i-1) < support.length" style=" height: 70px" :title=support[parseInt(support.length/3)*3+i-1].title :img-src=support[parseInt(support.length/3)*3+i-1].imgurl img-alt="Image" img-top class="mr-3 no-gutters">
-                        <b-card-text>
-                            {{support[parseInt(support.length/3)*3+i-1].body.slice(0, 20)}}...
-                        </b-card-text>
-                        <b-card-text class="small text-muted">Progres787s</b-card-text>
-                    </b-card>
-                </div>
-        </b-card-group>
-        <!-- <b-card-group columns class="mx-auto md-1 m-5" style="width: 60%">
-
-            <b-card title=Support img-src="https://placekitten.com/500/350" img-alt="Image" img-left class="mr-3">
-                <b-card-text>
-                    This card has supporting text below as a natural lead-in to additional content.
-                </b-card-text>
-                <b-card-text class="small text-muted">Progress</b-card-text>
-            </b-card>
-
-            <b-card title="Title" img-src="https://placekitten.com/500/350" img-alt="Image" img-top class="ml-3">
-
-                <b-card-text>
-                    This card has supporting text below as a natural lead-in to additional content.
-                </b-card-text>
-                <b-card-text class="small text-muted">Progress</b-card-text>
-            </b-card>
-
-            <b-card title="Title" img-src="https://placekitten.com/500/350" img-alt="Image" img-top class="ml-3">
-                <b-card-text>
-                    This card has supporting text below as a natural lead-in to additional content.
-                </b-card-text>
-                <b-card-text class="small text-muted">Progress</b-card-text>
-            </b-card>
-
-        </b-card-group>
-        <b-card-group columns class="mx-auto md-1 m-5" style="width: 60%">
-
-            <b-card title="Title" img-src="https://placekitten.com/500/350" img-alt="Image" img-top class="m-3">
-                <b-card-text>
-                    This card has supporting text below as a natural lead-in to additional content.
-                </b-card-text>
-                <b-card-text class="small text-muted">Progress</b-card-text>
-            </b-card>
-
-            <b-card title="Title" img-src="https://placekitten.com/500/350" img-alt="Image" img-top class="m-3">
-                <b-card-text>
-                    This card has supporting text below as a natural lead-in to additional content.
-                </b-card-text>
-                <b-card-text class="small text-muted">Progress</b-card-text>
-            </b-card>
-
-            <b-card title="Title" img-src="https://placekitten.com/500/350" img-alt="Image" img-top class="m-3">
-                <b-card-text>
-                    This card has supporting text below as a natural lead-in to additional content.
-                </b-card-text>
-                <b-card-text class="small text-muted">Progress</b-card-text>
-            </b-card>
-
-        </b-card-group> -->
+        <b-button variant="dark"  v-if="canWrite">
+            <router-link to="/supportwriter" class="writerLink">Write new Support</router-link>
+        </b-button>
+        
     </div>
 </template>
 
@@ -96,7 +48,9 @@ export default {
     data() {
         return {
             support: [],
-            imgpath: {}
+            support_body: [],
+            imgpath: {},
+            canWrite: false
         }
     },
     created: function() {
@@ -104,11 +58,17 @@ export default {
                         QuerySnapshot.forEach(doc =>{
                             this.support.push(doc.data())
                             console.log('SUPPORT: ',this.support)
+                            console.log(parseInt(doc.data().amount))
+                            this.support_body.push(doc.data().body.split("<br>"))
                             this.support.sort(function(a, b){
                                 return a.createdAt < b.createdAt ? -1:1;
                             })
                         })
         })
+        var user = firebase.auth().currentUser;
+        if(user.emailVerified){
+            this.canWrite = true
+        }
         
     },
     firestore(){
@@ -122,7 +82,20 @@ export default {
 </script>
 
 <style scoped>
-    /* .img-top {
-        object-fit:cover;
-    } */
+@font-face { font-family: 'Goyang'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Goyang.woff') format('woff'); font-weight: normal; font-style: normal; }
+@font-face { font-family: 'LotteMartHappy'; font-style: normal; font-weight: 400; src: url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartHappy/LotteMartHappyMedium.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartHappy/LotteMartHappyMedium.woff') format('woff'); } @font-face { font-family: 'LotteMartHappy'; font-style: normal; font-weight: 700; src: url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartHappy/LotteMartHappyBold.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartHappy/LotteMartHappyBold.woff') format('woff'); } .lottemarthappy * { font-family: 'LotteMartHappy', sans-serif; }
+  *{
+    font-family: 'Goyang'
+  }
+  h1{
+    margin: 30px;
+    font-family: 'LotteMartHappy'
+  }
+  .writerLink{
+      text-decoration: none;
+      color: #ffffff;
+  }
+  .b-card{
+      border:none;
+  }
 </style>

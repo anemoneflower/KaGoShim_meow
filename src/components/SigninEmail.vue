@@ -29,14 +29,6 @@ import * as firebase from "firebase/app"
 import "firebase/auth"
 
 
-
-
-
-
-// import BootstrapVue from 'bootstrap-vue'
-
-// Vue.use(BootstrapVue)
-
 export default {
     name: 'SigninEmail',
     data() {
@@ -65,13 +57,20 @@ export default {
                 //         autoHideDelay: 10000
                 //     })
                 // })
-                .catch(function(error){
+                .catch(error=>{
                     var errorCode = error.code;
                     var errorMessage = error.message;
                     // console.log(this.email)
                     // console.log(this.password)
                     console.log("ERROR", error.message)
                     // makeToast()
+                    this.$bvToast.toast('이메일이나 비밀번호를 다시 확인해보라냐앙~', {
+                        title: '로그인에 실패했다냥!',
+                        autoHideDelay: 5000,
+                        solid: true,
+                        variant: 'danger',
+                        toaster: 'b-toaster-bottom-center'
+                    })
                 })
 
             // firebase.auth().onAuthStateChanged(function(user) {

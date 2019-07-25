@@ -138,7 +138,7 @@
                     isUsingVueRouter: true,
                     mobileBreakpoint: 992,
                     brandImagePath: '/',
-                    brandImage: require('@/assets/logo.png'),
+                    brandImage: require('@/assets/caticon.png'),
                     brandImageAltText: 'vue-navigation-bar',
                     collapseButtonStyle: 'dark',
                     ariaLabelMainNav: 'Main Navigation',
@@ -223,23 +223,24 @@
                         },
                     ],
                     menuOptionsRight: [
-                        // {
-                        //     type: 'button',
-                        //     text: 'Signup',
-                        //     path: '/signup',
-                        //     class: 'button-pink'
-                        // },
+
                         {
                             type: 'button',
                             text: 'mypage',
                             path: '/mypage',
+                            class: 'button-pink'
+                        },
+                        {
+                            type: 'button',
+                            text: 'logout',
+                            path: '/logout',
                             class: 'button-pink'
                         }
                     ]
                 }
             }
         },
-        created: function(){
+    created: function(){
         console.log(this)
         firebase.auth().onAuthStateChanged((user) =>{
         if(user){
@@ -251,14 +252,7 @@
             }
             else{
                 console.log("NOT VERYFIED")
-                this.loginLink = 'verify'
-                // this.verificationmsg = '인증 이메일을 발송했다냥!'
-                //         console.log(user)
-                //         user.sendEmailVerification().then(function() { 
-                //             console.log('인증메일 발송 성공') 
-                //         }).catch(function(error) { 
-                //             console.error('인증메일 발송 에러', error); 
-                //         });
+                this.loginLink = 'mypage'
             }
         }
         else{
@@ -269,19 +263,24 @@
         })
     },
     methods:{
-        Link: function(){
-            if(this.loginLink === 'mypage'){
-                this.$router.replace('mypage')
+        // Link: function(){
+        //     if(this.loginLink === 'mypage'){
+        //         this.$router.replace('mypage')
+        //     }
+        //     else if(this.loginLink === 'login'){
+        //         this.$router.replace('login')
+        //     }
+        //     else{
+        //         console.log("GOTOVERIFYPAGE")
+        //     }
+        // }
+        signout(){
+            firebase.auth().onAuthStateChanged((user)=>{
+                user.signOut()
+            })
         }
-        else if(this.loginLink === 'login'){
-            this.$router.replace('login')
-        }
-        else{
-            console.log("GOTOVERIFYPAGE")
-        }
+    
     }
-  
-}
 }
 </script>
 

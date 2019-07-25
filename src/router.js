@@ -21,13 +21,13 @@ export default new Router({
             // this generates a separate chunk (about.[hash].js) for this route
             // which is lazy-loaded when the route is visited.
             component: () =>
-                import ( /* webpackChunkName: "about" */ './views/About.vue')
+                import ('./views/About.vue')
         },
         {
             path: '/login',
             name: 'login',
             component: () =>
-                import ( /* webpackChunkName: "about" */ './views/Login.vue')
+                import ('./views/Login.vue')
         },
         {
             path: '/signup',
@@ -68,58 +68,58 @@ export default new Router({
         {
             path: '/goods/add',
             name: 'new-goods',
-            component: () => import('./components/NewGoods.vue')
-          },
-          {
-              path: '/upload',
-              name: 'upload',
-              component: () => import('./components/Upload.vue')
-          },
-          {
+            component: () =>
+                import ('./components/NewGoods.vue')
+        },
+        {
+            path: '/upload',
+            name: 'upload',
+            component: () =>
+                import ('./components/Upload.vue')
+        },
+        {
             path: '/posts',
             name: 'community',
             // route level code-splitting
             // this generates a separate chunk (about.[hash].js) for this route
             // which is lazy-loaded when the route is visited.
-            component: () => import(/* webpackChunkName: "about" */ './views/community.vue')
-          },
-          {
+            component: () =>
+                import ( /* webpackChunkName: "about" */ './views/community.vue')
+        },
+        {
             path: '/posts/add',
             name: 'new-posts',
-            component: () => import('./components/newpost.vue')
-          },
-          {
+            component: () =>
+                import ('./components/newpost.vue')
+        },
+        {
             path: '/gallery',
             name: 'gallery',
-            component: () => import('./views/gallery.vue')
-          },
-          {
+            component: () =>
+                import ('./views/gallery.vue')
+        },
+        {
             path: '/gallery/add',
             name: 'new-gallery',
-            component: () => import('./components/galleryuploader.vue')
-          },
+            component: () =>
+                import ('./components/galleryuploader.vue')
+        },
+        {
+            path: '/verification',
+            name: 'verification',
+            component: () =>
+                import ('./components/verification.vue')
+        },
+        {
+            path: '/logout',
+            name: 'logout',
+            component: () =>
+                import ('./components/LogoutComp.vue')
+        },
           {
             path: '/gallery/add2',
             name: 'new-gallery2',
             component: () => import('./views/galleryuploader2.vue')
           },
-          // {
-          //   path: '/test',
-          //   name: 'test',
-          //   component: () => import('./views/test.vue')
-          // }
-          //Details of a goods item
-        //   {
-        //     path: '/goods/:item/:success?',
-        //     name: 'view-good',
-        //     component: ViewGood
-        //   }
-
-        // {
-        //     path: '/slideshow',
-        //     name: 'slideshow',
-        //     component: () => import ('./components/Carousel.vue')
-        // }
-
     ]
 })

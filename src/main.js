@@ -8,6 +8,8 @@ import JQuery from 'jquery'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import VueFirestore from 'vue-firestore'
+import ImageUploader from 'vue-image-upload-resize'
+Vue.use(ImageUploader);
 import VueFullPage from 'vue-fullpage.js'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
