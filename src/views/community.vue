@@ -11,14 +11,14 @@
 
           <div class="postfield">
             <b-form-textarea
-              class="myoutline ppp"
+              class="myoutline ppp shadow-none border-light"
               id="textarea-default"
               v-model="content"
               placeholder="Enter something..."
               no-resize
               rows="3"
             ></b-form-textarea>
-            <button type="submit" class="button is-link btn"  href="/#/goods">Submit</button>
+            <button type="submit" class="button is-link btn shadow-none">Submit</button>
 
 
             <!-- <a type="submit" class="btn"> 게시물 등록하기 </a> -->
@@ -34,8 +34,8 @@
                   <p class="namestamp">
                       {{post.username}}
                   </p>
-                  <p class="contentstamp">
-                      {{post.content}}
+                  <p class="contentstamp" v-for="b in post.content" v-bind:key=b>
+                      {{b}}
                   </p>
                   </b-media>
               </b-card>
@@ -102,7 +102,7 @@
           let data = {
             'id': doc.id,
             'username': doc.data().username,
-            'content': doc.data().content,
+            'content': doc.data().content.split("<br>"),
             'time': doc.data().time,
             'timenum': doc.data().timenum,
             'profilepicurl': doc.data().profilepicurl,
@@ -140,15 +140,16 @@
           // console.log('now2: ', now)
           // now: d.toString()
           db.collection('Community').add({
-              content: this.content,
+              content: this.content.replace(/(\r\n|\n|\r)/gm, "<br>"),
               profilepicurl: this.profilepicurl,
               time: d.toString(),
               username: this.username,
               timenum: e,
               id: e
           })
-              .then(function (docRef) {
+              .then(docRef=> {
               console.log('Document written with ID: ', docRef.id)
+              this.$router.go(this.$router.currentRoute)
               })
               .catch(function (error) {
               console.error('Error adding document: ', error)
@@ -230,8 +231,10 @@
     }
     .contentstamp{
       font-family: 'Goyang';
-      font-size: 1.3rem;
+      font-size: 1.1rem;
+      // line-height: 0.7rem;
       text-align: center;
+      margin: 0.2rem;
       font-weight: 550;
       color: #685642;
     }

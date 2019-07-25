@@ -17,7 +17,7 @@
       <hr>
       <div class="field">
         <div class="control">
-          <button type="submit" class="button is-link">Submit</button>
+          <b-button type="submit" variant="dark" class="button is-link m-3 shadow-none">Submit</b-button>
         </div>
       </div>
     </form>
@@ -56,6 +56,7 @@
           uploadTask:'',
           downloadURL: '',
           imgname: '',
+          cnt: 0
         }
       },
 
@@ -103,66 +104,32 @@
                         console.log('uploadRef: ', uploadRef)
                         console.log('this', this)
                         this.uploadTask = uploadRef.put(el.file)
-                                                .then(hi => {
-                                                    console.log('current el3: ', el.file)
-                                                    storageRef.child('gallery/'+el.file.name).getDownloadURL().then(url =>{
-                                                                this.downloadURL = url
-                                                                console.log("url OK: ", url)
-                                                                
-                                                                db.collection('Gallery').add({
-                                                                    downloadURL: this.downloadURL,
-                                                                    slug: this.generateUUID()
-                                                                })
-                                                                    .then(function (docRef) {
-                                                                    console.log('Document written with ID: ', docRef.id)
-                                                                    })
-                                                                    .catch(function (error) {
-                                                                    console.error('Error adding document: ', error)
-                                                                    })
-                                                                })  
-                                                            .catch(error => {
-                                                                console.log("Getting file url error222")
-                                                            })
-                                                }) 
+                          .then(hi => {
+                            console.log('current el3: ', el.file)
+                            storageRef.child('gallery/'+el.file.name).getDownloadURL().then(url =>{
+                              this.downloadURL = url
+                              console.log("url OK: ", url)
+                              this.cnt = this.cnt + 1
+                              
+                              db.collection('Gallery').add({
+                                  downloadURL: this.downloadURL,
+                                  slug: this.generateUUID()
+                              })
+                                  .then(function (docRef) {
+                                  console.log('Document written with ID: ', docRef.id)
+                                  console.log('CNT: ', this.cnt)
+                                  })
+                                  .catch(function (error) {
+                                  console.error('Error adding document: ', error)
+                                  })
+                              })  
+                              .catch(error => {
+                                  console.log("Getting file url error222")
+                              })
+                          }) 
                     })
 
-
-
-
-
-
-            })
-
-            // var uploadRef = storageRef.child('gallery/'+(this.$refs.pond.getFiles()[i]).file.name)
-            //     uploadRef.put(this.$refs.pond.getFiles()[i].file).then(function(snapshot){
-            //     console.log('UPLOAD IMAGE')
-            //     })
-            //     this.uploadTask = uploadRef.put(this.$refs.pond.getFiles()[i].file)
-            //                             .then(hi => {
-            //                                 storageRef.child('gallery/'+(this.$refs.pond.getFiles()[i]).file.name).getDownloadURL().then(url =>{
-            //                                             this.downloadURL = url
-            //                                             console.log("url OK: ", url)
-                                                        
-            //                                             db.collection('Gallery').add({
-            //                                                 downloadURL: this.downloadURL,
-            //                                                 slug: this.generateUUID()
-            //                                             })
-            //                                                 .then(function (docRef) {
-            //                                                 console.log('Document written with ID: ', docRef.id)
-            //                                                 })
-            //                                                 .catch(function (error) {
-            //                                                 console.error('Error adding document: ', error)
-            //                                                 })
-            //                                             })  
-            //                                         .catch(error => {
-            //                                             console.log("Getting file url error222")
-            //                                         })
-            //                             }) 
-
-
-            
-
-
+            })    
         },
         generateUUID () {
           let d = new Date().getTime()

@@ -5,29 +5,8 @@
      <Carousel/>
     <div class="columns">
       <div class="column is-8">
-        <!-- <h1>냥이 굿즈다냥!</h1> -->
-        <!-- <div>
-            <router-link to="/goods/add">냥이템 등록</router-link>
-    
-        </div> -->
-       <!-- <div>
-            <b-card
-                class="b-card-text"
-                overlay
-                img-src="https://picsum.photos/900/250/?image=3"
-                img-alt="Card Image"
-                text-variant="white"
-                title="고양이 슬리퍼"
-                sub-title="좋아용"
-            >
-                <b-card-text>
-                따뜻하고 폭신하고 귀욤뽀짝한 슬리퍼 사라냥 "3"
-                </b-card-text>
-            </b-card>
-        </div> -->
-
         <div class="user-list" v-for="item in items" :key="item.id">
-            <b-card no-body class="overflow-hidden" style="max-width: 1300px;">
+            <b-card no-body class="overflow-hidden" style="max-width: 1300px; max-height: 470px" >
                 <b-row no-gutters>
                 <b-col md="6">
                     <b-card-img :src="item.itemimg" class="rounded-0"></b-card-img>
@@ -41,9 +20,11 @@
                       <b-link class="card-link" :href=item.link>
                           사러가기
                       </b-link>
-                      <b-card-text class="mt-3" v-for="b in item.shortIntro" v-bind:key=b>
+                      <div class="body-text">
+                        <b-card-text class="mt-1 intro" v-for="b in item.shortIntro" v-bind:key=b>
                           {{b}}
-                      </b-card-text>
+                        </b-card-text>
+                      </div>
                     </b-card-body>
                 </b-col>
                 </b-row>
@@ -65,7 +46,7 @@
           </div>
 
         </div>
-        <b-button variant="dark"  v-if="canWrite">
+        <b-button variant="dark"  v-if="canWrite" class="m-3">
             <router-link to="/goods/add" class="writerLink">냥이템 등록</router-link>
         </b-button>
 
@@ -142,22 +123,32 @@
       // font-family: 'LeeHyunJi', cursive;
       font-size: 100px;
   }
+  .body-text{
+    margin: 3rem;
+  }
 
   .card-title{
       // font-family: 'LeeHyunJi', cursive;
       // font-size: 100px;
       font-weight: bold;
       margin: 1rem;
+      font-size: 1rem;
   }
   .card-body{
       // font-family: 'LeeHyunJi', cursive;
       font-size: 30px;
+      font-size: 1rem;
       // margin: 10px;
       // text-decoration: none;
   }
     .writerLink{
     text-decoration: none;
     color: #ffffff;
+    font-size: 1rem;
+  }
+  .intro{
+    font-size: 0.8rem;
+    margin: 0;
   }
   h1 {
     font-family: 'LeeHyunJi', cursive;
@@ -165,7 +156,6 @@
     margin: 30px 0;
   }
   .card-link{
-    margin-top: 10px;
     text-decoration: none;
     font-weight: bold;
     color: rgb(49, 110, 31);

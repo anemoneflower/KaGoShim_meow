@@ -76,9 +76,9 @@
     color: #fff;
     text-decoration: none;
     padding: 0.6rem 2rem;
-    font-size: 1rem;
-    background: hsl(4, 90%, 88%);
-    border-radius: 30px;
+    font-size: 1.5rem;
+    background: #B7C68B;
+    border-radius: 1rem;
     margin-top: 1rem;
     margin-bottom: 1rem;
     transition-property: background;
@@ -87,7 +87,7 @@
   }
 
   .btn:hover{
-    background: rgb(221, 188, 187);
+    background: #DED29E;
     color: #fff;
   }
 </style>

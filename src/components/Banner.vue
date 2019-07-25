@@ -62,49 +62,11 @@
                             type: 'link',
                             text: '게시판',
                             path: '/posts',
-                            subMenuOptions: [
-                                {
-                                    type: 'link',
-                                    text: '핫한 글',
-                                    path: '/',
-                                },
-                                {
-                                    type: 'link',
-                                    text: '전체 글',
-                                    path: '/posts',
-                                },
-                                {
-                                    type: 'link',
-                                    text: '제보하기',
-                                    path: '/',
-                                },
-                            ]
                         },
                         {
                             type: 'link',
                             text: '굿즈 마켓',
                             path: '/goods',
-                            subMenuOptions: [
-                                {
-                                    type: 'link',
-                                    text: '전체보기',
-                                    path: '/goods',
-                                },
-                                {
-                                    type: 'hr',
-                                    text: '카테고리'
-                                },
-                                {
-                                    type: 'link',
-                                    text: '인형',
-                                    path: '/goods',
-                                },
-                                {
-                                    type: 'link',
-                                    text: '스티커',
-                                    path: '/goods',
-                                },
-                            ]
                         },
                         {
                             type: 'link',
@@ -115,7 +77,7 @@
                             type: 'link',
                             text: '후원하기',
                             path: '/support',
-                        },
+                        }
                     ],
                     menuOptionsRight: [
                         // {
@@ -170,50 +132,13 @@
                         {
                             type: 'link',
                             text: '게시판',
-                            path: '/',
-                            subMenuOptions: [
-                                {
-                                    type: 'link',
-                                    text: '핫한 글',
-                                    path: '/',
-                                },
-                                {
-                                    type: 'link',
-                                    text: '전체 글',
-                                    path: '/posts',
-                                },
-                                {
-                                    type: 'link',
-                                    text: '제보하기',
-                                    path: '/',
-                                },
-                            ]
+                            path: '/posts',
                         },
                         {
                             type: 'link',
                             text: '굿즈 마켓',
                             path: '/goods',
-                            subMenuOptions: [
-                                {
-                                    type: 'link',
-                                    text: '전체보기',
-                                    path: '/goods',
-                                },
-                                {
-                                    type: 'hr',
-                                    text: '카테고리'
-                                },
-                                {
-                                    type: 'link',
-                                    text: '인형',
-                                    path: '/goods',
-                                },
-                                {
-                                    type: 'link',
-                                    text: '스티커',
-                                    path: '/goods',
-                                },
-                            ]
+
                         },
                         {
                             type: 'link',
@@ -295,7 +220,7 @@
         font-size: 23px;
     }
     .vnb {
-        background: #fff;
+        background: transparent;// #fff;
         
         .button-pink {
             background: #B7C68B;
