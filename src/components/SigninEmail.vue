@@ -117,7 +117,7 @@ export default {
         font-family:'LotteMartHappy', normal;
         margin-left: 25%;
         margin-top: 10px;
-        background: #ffd9df;
+        background: #B7C68B;
     }
     .inputs::placeholder{
         font-family:'LotteMartHappy', normal;
@@ -137,7 +137,7 @@ export default {
 
     .pwinputs{
         font-family:'LotteMartHappy', normal;
-        background: #ffd9df;
+        background: #B7C68B;
     }
     .signbtn{
         font-family:'LotteMartHappy', normal;

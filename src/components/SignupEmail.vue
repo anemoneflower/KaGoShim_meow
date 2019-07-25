@@ -177,7 +177,7 @@ export default {
     .inputs{
         margin-left: 25%;
         margin-top: 10px;
-        background: #ffd9df;
+        background: #B7C68B;
     }
     .inputs::placeholder{
         font-style: italic;
@@ -188,7 +188,7 @@ export default {
         margin-bottom: 20px;
     }
     .pwinputs{
-        background: #ffd9df;
+        background: #B7C68B;
     }
     .signbtn{
         margin: 5% 10px 20px 20px;

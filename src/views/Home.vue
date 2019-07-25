@@ -8,7 +8,7 @@
             </div>
             <div class="section myc">
               
-                <homecarousel/>
+            <homecarousel/>
             </div>
             <div class="section">
               <b-container fluid class="bv-example-row">
@@ -34,34 +34,6 @@
             </div>
         </full-page>
     </div>
-  
-  <!-- <div class="homecontainer">
-    <div>
-      <b-img 
-        src="https://firebasestorage.googleapis.com/v0/b/kagosim-meow.appspot.com/o/resources%2FKakaoTalk_20190721_221146212.jpg?alt=media&token=74e2054a-14b3-4502-859b-51354e6f6bd6"
-        fluid rounded alt="Responsive Rounded image" width=3000rem>
-        </b-img>
-    </div>
-    <homecarousel/>
-    <HelloWorld msg="보고싶었다냥"/>
-    <b-container fluid class="bv-example-row">
-      <b-row>
-        <b-col>
-          <h1> 오늘의 냥이비디오당 </h1>
-          <iframe 
-            width="560" height="315" src="https://www.youtube.com/embed/2gCiWrSm-04" 
-            frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-          </iframe>
-        </b-col>
-        <b-col>
-          <h1>핫한 냥수다~</h1>
-          </b-col>
-        <b-col>
-          <h1>오늘의 냥템</h1>
-        </b-col>
-      </b-row>
-    </b-container>
-  </div> -->
 </template>
 
 <script>
@@ -160,8 +132,6 @@ export default {
     margin: 2rem;
   }
 
-
-  
   .imgclass {
 
   }

@@ -60,12 +60,6 @@ Vue.use(CarouselPlugin)
       background: transparent;
     }
   
-    /* .outer{
-      vertical-align: text-top;
-    }
-    .topcent {
-        vertical-align: text-top;
-    } */
     .outer{
       width: 100%;
       height: 90%;
@@ -83,24 +77,20 @@ Vue.use(CarouselPlugin)
         font-family: 'LeeHyunJi', cursive;
         font-size: 30px;
     }
-
-
     .carousel{
         height:  14rem;
         overflow: hidden;
         background: transparent;
     }
     .title-text{
-      /* position:inherit; */
-      /* margin: 20% 10%; */
       margin: 5px;
       margin-bottom:1rem;
       text-align: center;
       font-weight: 700;
     }    
     .hoowon {
-      margin-bottom: 33rem;
-      margin-left:60rem;
+      margin-bottom: 20rem;
+      margin-left:40rem;
       width: 9.5rem;
       padding: 1rem;
       border-radius: 1rem;
@@ -108,11 +98,10 @@ Vue.use(CarouselPlugin)
       background: rgb(170, 184, 129);
       border: none;
     }
-
     .hoowon:hover{
-    background: #DED29E;
-    color: #fff;
-  }
+      background: #DED29E;
+      color: #fff;
+    }
     .carousel-text{
         font-family: 'LeeHyunJi', cursive;
     }
