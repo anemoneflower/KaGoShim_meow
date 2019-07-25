@@ -9,6 +9,7 @@
           size="lg"
           required
           placeholder="새 후원 제목을 입력하라냥"
+          class="border-secondary shadow-none"
         ></b-form-input>
       </b-form-group>
 
@@ -19,6 +20,7 @@
           type="number"
           required
           placeholder="필요한 후원 금액이 얼마냥?"
+          class="border-secondary shadow-none"
         ></b-form-input>
       </b-form-group>
 
@@ -26,6 +28,7 @@
         <b-form-textarea
           id="body"
           v-model="body"
+          class="border-secondary shadow-none"
           placeholder="집사들에게 어필해보라냥!"
           rows="13"
           no-resize
@@ -45,7 +48,7 @@
             required/>
       </b-form-group>
 
-      <b-button id="submitbtn" type="submit" variant="dark">올릴거냥?</b-button>
+      <b-button class="mb-3" id="submitbtn" type="submit" variant="dark">올릴거냥?</b-button>
     </b-form>
 
   </div>
@@ -152,12 +155,13 @@ export default {
     margin-left: 25%;
   }
   .formgroups {
-    width:70%;
-    margin-left:15%;
+    width:50%;
+    margin-left:25%;
   }
   h1{
     margin: 30px;
-    font-family: 'LotteMartHappy'
+    /* font-family: 'LotteMartHappy' */
+    font-weight: bolder;
   }
   /* .submitbtn {
     background-color:#ffd9df;

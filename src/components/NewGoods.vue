@@ -5,16 +5,23 @@
 
 
     
-    <h1>Add New Cat Item</h1>
+    <h1>새 냐옹이 아이템이다냥</h1>
     <!-- <upload/>
     <newupload/> -->
     <form @submit.prevent="saveContact">
       <div class="field">
 
-        <label class="label">상품명</label>
-        <div class="control">
+        <!-- <label class="label">상품명</label> -->
+        <!-- <div class="control">
           <input class="input" type="text" placeholder="상품명" v-model="itemName" required>
-        </div>
+        </div> -->
+        <b-form-input
+          v-model="itemName"
+          size="lg"
+          required
+          placeholder="상품명을 입력하라냥"
+          class="border-secondary shadow-none"
+        ></b-form-input>
       </div>
 
       <!-- <div class="field">
@@ -25,39 +32,62 @@
       </div> -->
 
       <div class="field">
-        <label class="label">가격</label>
-        <div class="control">
+        <!-- <label class="label">가격</label> -->
+        <!-- <div class="control">
           <input class="input" type="text" placeholder="가격" v-model="price" required>
-        </div>
+        </div> -->
+        <b-form-input
+          v-model="price"
+          type="number"
+          required
+          placeholder="가격이 얼마냥?"
+          class="border-secondary shadow-none"
+        ></b-form-input>
       </div>
-
       <div class="field">
-        <label class="label">상세 설명</label>
-        <div class="control">
-          <input class="input" type="text" placeholder="설명" v-model="shortIntro" required>
-        </div>
+        <!-- <label class="label">가격</label> -->
+        <!-- <div class="control">
+          <input class="input" type="text" placeholder="가격" v-model="price" required>
+        </div> -->
+        <b-form-input
+          v-model="link"
+          type="text"
+          required
+          placeholder="링크가 있냥?"
+          class="border-secondary shadow-none"
+        ></b-form-input>
       </div>
-      <hr>
+      <div class="field">
+        <!-- <label class="label">상세 설명</label> -->
+        <!-- <div class="control">
+          <input class="input" type="text" placeholder="설명" v-model="shortIntro" required>
+        </div> -->
+        <b-form-textarea
+          v-model="shortIntro"
+          placeholder="설명이 필요하다냥!"
+          rows="13"
+          no-resize
+          required
+          class="border-secondary shadow-none"
+        ></b-form-textarea>
+      </div>
       <div class="filepond">
         <file-pond
             name="test"
             ref="pond"
-            labelIdle="Drop files here..."
+            labelIdle="이미지를 올려라냥 @.@"
             allowMultiple="true"
             acceptedFileTypes="image/jpeg, image/png"
             v-bind:files="myFiles"
             v-on:init="handleFilePondInit"/>
             <!-- <button @click="checkfilepond">Upload Image</button> -->
       </div>
-
-      <hr>
-      
-
       <div class="field">
-        <div class="control">
+        <b-button id="submitbtn" class="button is-link m-3" type="submit" variant="dark">올릴거냥?</b-button>
+        <!-- <div class="control">
           
           <button type="submit" class="button is-link">Submit</button>
-        </div>
+        </div> -->
       </div>
 
     </form>
@@ -99,7 +129,8 @@
           imgname: '',
           itemName: null,
           price: null,
-          shortIntro: null
+          shortIntro: null,
+          itemlink: null,
         }
       },
 
@@ -109,93 +140,63 @@
             
             // FilePond instance methods are available on `this.$refs.pond`
         },
-        checkfilepond(){
-            console.log(this.$refs.pond.getFiles())
-            console.log(this.$refs.pond.getFiles()[0].file)
-            var uploadRef = storageRef.child('test/'+this.$refs.pond.getFiles()[0].file.name)
-            uploadRef.put(this.$refs.pond.getFiles()[0].file).then(function(snapshot){
-            console.log('UPLOAD IMAGE')
-            })
-            this.uploadTask = uploadRef.put(this.$refs.pond.getFiles()[0].file)
-                                    .then(hi => {
-                                        storageRef.child('test/'+this.$refs.pond.getFiles()[0].file.name).getDownloadURL().then(url =>{
-                                                    this.downloadURL = url
-                                                    console.log("url OK: ", url)})
-            
-                                                .catch(error => {
-                                                    console.log("Getting file url error")
-                                                })
-                                    })
-            //console.log("HHHH", this.uploadTask.snapshot.ref.getDownloadURL())
-        
-            // this.uploadTask.snapshot.ref.
-            // storageRef.child('test/'+this.$refs.pond.getFiles()[0].file.name).getDownloadURL().then(url =>{
-            //                                         this.downloadURL = url
-            //                                         console.log("url OK: ", url)})
-            
-            //                                     .catch(error => {
-            //                                         console.log("Getting file url error")
-            //                                     })
+        // checkfilepond(){
+        //     console.log(this.$refs.pond.getFiles())
+        //     console.log(this.$refs.pond.getFiles()[0].file)
+        //     var uploadRef = storageRef.child('test/'+this.$refs.pond.getFiles()[0].file.name)
+        //     uploadRef.put(this.$refs.pond.getFiles()[0].file).then(function(snapshot){
+        //     console.log('UPLOAD IMAGE')
+        //     })
+        //     this.uploadTask = uploadRef.put(this.$refs.pond.getFiles()[0].file)
+        //       .then(hi => {
+        //           storageRef.child('test/'+this.$refs.pond.getFiles()[0].file.name).getDownloadURL().then(url =>{
+        //                       this.downloadURL = url
+        //                       console.log("url OK: ", url)})
 
-            // this.$router.replace('/goods')
-        },
+        //                   .catch(error => {
+        //                       console.log("Getting file url error")
+        //                   })
+        //       })
+
+
+        //     // this.$router.replace('/goods')
+        // },
         saveContact () {
             console.log(this.$refs.pond.getFiles())
             console.log(this.$refs.pond.getFiles()[0].file)
-            var uploadRef = storageRef.child('test/'+this.$refs.pond.getFiles()[0].file.name)
+            var uploadRef = storageRef.child('Goods/'+this.$refs.pond.getFiles()[0].file.name)
             uploadRef.put(this.$refs.pond.getFiles()[0].file).then(function(snapshot){
             console.log('UPLOAD IMAGE')
             })
             this.uploadTask = uploadRef.put(this.$refs.pond.getFiles()[0].file)
-                                    .then(hi => {
-                                        storageRef.child('test/'+this.$refs.pond.getFiles()[0].file.name).getDownloadURL().then(url =>{
-                                                    this.downloadURL = url
-                                                    console.log("url OK: ", url)
-                                                    
-                                                    db.collection('MarketItemList').add({
-                                                        itemName: this.itemName,
-                                                        price: this.price,
-                                                        shortIntro: this.shortIntro,
-                                                        downloadURL: this.downloadURL,
-                                                        slug: this.generateUUID()
-                                                    })
-                                                        .then(function (docRef) {
-                                                        console.log('Document written with ID: ', docRef.id)
-                                                        })
-                                                        .catch(function (error) {
-                                                        console.error('Error adding document: ', error)
-                                                        })
-                                                    
-                                                    
-                                                    
-                                                    })
-                                                    
-            
-                                                .catch(error => {
-                                                    console.log("Getting file url error")
-                                                })
-                                    })
+              .then(hi => {
+                  storageRef.child('Goods/'+this.$refs.pond.getFiles()[0].file.name).getDownloadURL().then(url =>{
+                      this.downloadURL = url
+                      console.log("url OK: ", url)
+                      
+                      db.collection('MarketItemList').add({
+                          itemName: this.itemName,
+                          price: this.price,
+                          shortIntro: this.shortIntro.replace(/(\r\n|\n|\r)/gm, "<br>"),
+                          downloadURL: this.downloadURL,
+                          link: this.link,
+                          slug: this.generateUUID()
+                      })
+                          .then(function (docRef) {
+                          console.log('Document written with ID: ', docRef.id)
+                          })
+                          .catch(function (error) {
+                          console.error('Error adding document: ', error)
+                          })
+                      
+                      })
+                  .catch(error => {
+                      console.log("Getting file url error")
+                  })
+                  this.$router.replace('/goods')
+              })
 
 
-
-
-
-
-
-        //   firestore.collection('MarketItemList').add({
-        //     itemName: this.itemName,
-        //     price: this.price,
-        //     shortIntro: this.shortIntro,
-        //     downloadURL: this.downloadURL,
-        //     slug: this.generateUUID()
-        //   })
-        //     .then(function (docRef) {
-        //       console.log('Document written with ID: ', docRef.id)
-        //     })
-        //     .catch(function (error) {
-        //       console.error('Error adding document: ', error)
-        //     })
-            //this.$router.replace('/goods')
         },
         generateUUID () {
           let d = new Date().getTime()
@@ -219,25 +220,36 @@
 </script>
 
 <style scoped>
-
-  section {
-    height: 100vh;
+@font-face { font-family: 'Goyang'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Goyang.woff') format('woff'); font-weight: normal; font-style: normal; }
+@font-face { font-family: 'LotteMartHappy'; font-style: normal; font-weight: 400; src: url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartHappy/LotteMartHappyMedium.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartHappy/LotteMartHappyMedium.woff') format('woff'); } @font-face { font-family: 'LotteMartHappy'; font-style: normal; font-weight: 700; src: url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartHappy/LotteMartHappyBold.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartHappy/LotteMartHappyBold.woff') format('woff'); } .lottemarthappy * { font-family: 'LotteMartHappy', sans-serif; }
+  *{
+    font-family: 'Goyang'
   }
+  /* section {
+    height: 100vh;
+  } */
 
   h1 {
-    font-size: 30px;
-    margin: 30px 0;
+    margin: 30px;
+    /* font-family: 'LotteMartHappy' */
+    font-weight: bolder;
   }
 
-  .input {
+  /* .input {
     height: 40px;
+  } */
+  .field{
+    margin: 10px;
+    width:90%;
+    margin-left:5%;
   }
-
   .filepond {
-    width: 50%;
-    margin-left: 25%;
+    width:90%;
+    margin-left:5%;
+    /* width: 50%;
+    margin-left: 25%; */
   }
-  .dropbox {
+  /* .dropbox {
     outline: 2px dashed #aaa;
     background: #7fb4dd;
     width: 300px;
@@ -250,8 +262,8 @@
     top: 50px;
     left: 0;
     z-index: 2;
-  }
-  .input-file{
+  } */
+  /* .input-file{
     position: absolute;
     opacity: 0;
     width:100%;
@@ -259,6 +271,6 @@
     top:0;
     left:0;
      z-index: 3;
-  }
+  } */
 
 </style>

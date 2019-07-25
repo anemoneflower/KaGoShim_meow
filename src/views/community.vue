@@ -1,73 +1,42 @@
 <template>
   <div id="contactspage">
-     
-  <section class="container">
+    <h1 class="animated bounceInDown delay-0.5s myeffects">카고쉼 게시판</h1>
+
+  <section class="mycontainer animated slideInLeft delay-0s myeffect">
     
     <div class="columns">
       <div class="column is-8">
-        <h1>카고쉼 게시판</h1>
 
         <form @submit.prevent="savepost">
+
           <div class="postfield">
             <b-form-textarea
-              id="textarea"
+              class="myoutline ppp shadow-none border-light"
+              id="textarea-default"
               v-model="content"
               placeholder="Enter something..."
+              no-resize
               rows="3"
-              max-rows="6"
             ></b-form-textarea>
-            <button type="submit" class="button is-link btn">Submit</button>
+            <button type="submit" class="button is-link btn shadow-none">Submit</button>
 
 
             <!-- <a type="submit" class="btn"> 게시물 등록하기 </a> -->
           </div>
         </form>
         <div>
-            <!-- <b-card>
-                <b-media>
-                <b-img slot="aside" blank blank-color="#ccc" width="64" alt="placeholder"></b-img>
-
-                <h5 class="mt-0">2019.07.23  2:58</h5>
-                <p>
-                    지슈
-                </p>
-                <p>
-                    아름냥이들 덕분에 맨날 힐링합니당~~
-                </p>
-
-                <b-media>
-                    <b-img slot="aside" blank blank-color="#ccc" width="64" alt="placeholder"></b-img>
-
-                    <h5 class="mt-0">댓글</h5>
-                    <p class="mb-0">
-                    Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in
-                    faucibus.
-                    </p>
-                </b-media>  
-                </b-media>
-            </b-card> -->
 
             <div class="post-list" v-for="post in posts" :key="post.id">
-                <b-card class="cont">
+                <b-card class="cont myoutline">
                   <b-media>
                   <b-img slot="aside" :src="post.profilepicurl" width="64" alt="placeholder"></b-img>
                   <h5 class="mt-0 timestamp" >{{post.time}}</h5>
                   <p class="namestamp">
                       {{post.username}}
                   </p>
-                  <p class="contentstamp">
-                      {{post.content}}
+                  <p class="contentstamp" v-for="b in post.content" v-bind:key=b>
+                      {{b}}
                   </p>
-
-                  <!-- <b-media>
-                      <b-img slot="aside" blank blank-color="#ccc" width="64" alt="placeholder"></b-img>
-
-                      <h5 class="mt-0">댓글</h5>
-                      <p class="mb-0">
-                      Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in
-                      faucibus.
-                      </p>
-                  </b-media>   -->
                   </b-media>
               </b-card>
             </div>
@@ -133,7 +102,7 @@
           let data = {
             'id': doc.id,
             'username': doc.data().username,
-            'content': doc.data().content,
+            'content': doc.data().content.split("<br>"),
             'time': doc.data().time,
             'timenum': doc.data().timenum,
             'profilepicurl': doc.data().profilepicurl,
@@ -171,15 +140,16 @@
           // console.log('now2: ', now)
           // now: d.toString()
           db.collection('Community').add({
-              content: this.content,
+              content: this.content.replace(/(\r\n|\n|\r)/gm, "<br>"),
               profilepicurl: this.profilepicurl,
               time: d.toString(),
               username: this.username,
               timenum: e,
               id: e
           })
-              .then(function (docRef) {
+              .then(docRef=> {
               console.log('Document written with ID: ', docRef.id)
+              this.$router.go(this.$router.currentRoute)
               })
               .catch(function (error) {
               console.error('Error adding document: ', error)
@@ -195,18 +165,47 @@
 <style lang="scss" scoped>
 
 
-
+#contactspage{
+  width: 100%;
+}
 .temp-class{
   font-size: 4rem;
 }
   @font-face { font-family: 'Goyang'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Goyang.woff') format('woff'); font-weight: normal; font-style: normal; }
   @font-face { font-family: 'LeeHyunJi'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/LeeHyunJi.woff') format('woff'); font-weight: normal; font-style: normal; }
   @font-face { font-family: 'GyeonggiBatang'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/GyeonggiBatang.woff') format('woff'); font-weight: normal; font-style: normal; }
+  @font-face { font-family: 'BMJUA'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/BMJUA.woff') format('woff'); font-weight: normal; font-style: normal; }
+  @font-face { font-family: 'BBTreeGL'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_nine_@1.1/BBTreeGL.woff') format('woff'); font-weight: normal; font-style: normal; }
 // @font-face { font-family: 'yg-jalnan'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff'); font-weight: normal; font-style: normal; }
 //   .temp{
 //     font-family: 'yg-jalnan', sans-serif;
 //   }
+.myeffect{
+    animation-duration: 2s;
+  }
+.mycontainer{
+  background-color: rgb(211, 216, 165);
+  padding: 3rem;
+  margin: auto;
+  width: 95%;
+  border-radius: 5rem;
+}
+    .ppp {
+      padding: 1rem;
+      width:80%;
+      margin: auto;
+    }
+    .myoutline{
+        border-radius: 2rem;
+        background-color: rgb(244, 247, 221);
 
+      // border: solid;
+      // border-color: #DED29E; //rgb(182, 202, 120);
+    }
+    .postfield{
+      font-family: 'Goyang';
+      padding: 1rem;
+    }
     .cont {
       margin: 2rem;
       text-align: left;
@@ -221,7 +220,7 @@
       font-family: 'Goyang';
       margin-bottom: 0.1rem;
       font-size: 0.8rem;
-      color: #fc869a;
+      color: #B3A580;
       position: left;
     }
     .namestamp{
@@ -232,9 +231,12 @@
     }
     .contentstamp{
       font-family: 'Goyang';
-      font-size: 1.3rem;
+      font-size: 1.1rem;
+      // line-height: 0.7rem;
       text-align: center;
+      margin: 0.2rem;
       font-weight: 550;
+      color: #685642;
     }
 
 
@@ -245,7 +247,7 @@
       text-decoration: none;
       padding: 0.3rem 1rem;
       font-size: 1.2rem;
-      background: hsl(4, 90%, 88%);
+      background: #B7C68B;
       border-radius: 0.7rem;
       margin-top: 1rem;
       transition-property: background;
@@ -254,7 +256,7 @@
     }
 
     .btn:hover{
-      background: rgb(221, 188, 187);
+      background: #DED29E;
       color: #fff;
     }
 
@@ -267,10 +269,14 @@
         font-size: 30px;
     }
   h1 {
-    font-family: 'LeeHyunji', cursive;
-    font-weight: bold;
-    font-size: 3rem;
-    margin: 30px 0;
+    font-family: 'LeeHyunJi', cursive;
+    font-weight: 900;
+    font-size: 4rem;
+    padding: 30px;
+    //margin: 30px 10px;
+    color: #685642;// hsl(3, 87%, 91%);
+    //text-shadow:  2px 0 hsl(0, 1%, 34%), 0 -2px hrgb(75, 75, 75)//-1px0 20px hsl(3, 25%, 51%)//grey;
+    //background-color:hsl(4, 90%, 88%);
   }
  
   .user-list {

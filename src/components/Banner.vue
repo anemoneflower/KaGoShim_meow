@@ -1,5 +1,5 @@
 <template>
-     
+
     <div class="navbarclass">
         <vue-navigation-bar v-if="loginLink === 'login'" :options="navbarData_login" >
         </vue-navigation-bar>    
@@ -62,49 +62,11 @@
                             type: 'link',
                             text: '게시판',
                             path: '/posts',
-                            subMenuOptions: [
-                                {
-                                    type: 'link',
-                                    text: '핫한 글',
-                                    path: '/',
-                                },
-                                {
-                                    type: 'link',
-                                    text: '전체 글',
-                                    path: '/posts',
-                                },
-                                {
-                                    type: 'link',
-                                    text: '제보하기',
-                                    path: '/',
-                                },
-                            ]
                         },
                         {
                             type: 'link',
                             text: '굿즈 마켓',
                             path: '/goods',
-                            subMenuOptions: [
-                                {
-                                    type: 'link',
-                                    text: '전체보기',
-                                    path: '/goods',
-                                },
-                                {
-                                    type: 'hr',
-                                    text: '카테고리'
-                                },
-                                {
-                                    type: 'link',
-                                    text: '인형',
-                                    path: '/goods',
-                                },
-                                {
-                                    type: 'link',
-                                    text: '스티커',
-                                    path: '/goods',
-                                },
-                            ]
                         },
                         {
                             type: 'link',
@@ -115,7 +77,7 @@
                             type: 'link',
                             text: '후원하기',
                             path: '/support',
-                        },
+                        }
                     ],
                     menuOptionsRight: [
                         // {
@@ -170,50 +132,18 @@
                         {
                             type: 'link',
                             text: '게시판',
-                            path: '/',
-                            subMenuOptions: [
-                                {
-                                    type: 'link',
-                                    text: '핫한 글',
-                                    path: '/',
-                                },
-                                {
-                                    type: 'link',
-                                    text: '전체 글',
-                                    path: '/',
-                                },
-                                {
-                                    type: 'link',
-                                    text: '제보하기',
-                                    path: '/',
-                                },
-                            ]
+                            path: '/posts',
                         },
                         {
                             type: 'link',
                             text: '굿즈 마켓',
                             path: '/goods',
-                            subMenuOptions: [
-                                {
-                                    type: 'link',
-                                    text: '전체보기',
-                                    path: '/goods',
-                                },
-                                {
-                                    type: 'hr',
-                                    text: '카테고리'
-                                },
-                                {
-                                    type: 'link',
-                                    text: '인형',
-                                    path: '/goods',
-                                },
-                                {
-                                    type: 'link',
-                                    text: '스티커',
-                                    path: '/goods',
-                                },
-                            ]
+
+                        },
+                        {
+                            type: 'link',
+                            text: '갤러리',
+                            path: '/gallery',
                         },
                         {
                             type: 'link',
@@ -285,17 +215,18 @@
 
 <style lang="scss">
   @font-face { font-family: 'LeeHyunJi'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/LeeHyunJi.woff') format('woff'); font-weight: normal; font-style: normal; }
-    *{
+    *{        
         font-family: 'LeeHyunJi', cursive;
         font-size: 23px;
     }
     .vnb {
+        background: transparent;// #fff;
         
         .button-pink {
-            background: hsl(4, 90%, 88%);
+            background: #B7C68B;
 
             &:hover {
-                background: darken(rgb(221, 188, 187), 10%);
+                background: darken(#DED29E	, 10%);
             }
         }
     }
