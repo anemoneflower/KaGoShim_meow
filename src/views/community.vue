@@ -2,12 +2,28 @@
   <div id="contactspage">
      
   <section class="container">
+    
     <div class="columns">
       <div class="column is-8">
-        <h1>냥이 굿즈다냥!</h1>
+        <h1>카고쉼 게시판</h1>
 
+        <form @submit.prevent="savepost">
+          <div class="postfield">
+            <b-form-textarea
+              id="textarea"
+              v-model="content"
+              placeholder="Enter something..."
+              rows="3"
+              max-rows="6"
+            ></b-form-textarea>
+            <button type="submit" class="button is-link btn">Submit</button>
+
+
+            <!-- <a type="submit" class="btn"> 게시물 등록하기 </a> -->
+          </div>
+        </form>
         <div>
-            <b-card>
+            <!-- <b-card>
                 <b-media>
                 <b-img slot="aside" blank blank-color="#ccc" width="64" alt="placeholder"></b-img>
 
@@ -29,70 +45,32 @@
                     </p>
                 </b-media>  
                 </b-media>
-            </b-card>
-        </div>
+            </b-card> -->
 
+            <div class="post-list" v-for="post in posts" :key="post.id">
+                <b-card class="cont">
+                  <b-media>
+                  <b-img slot="aside" :src="post.profilepicurl" width="64" alt="placeholder"></b-img>
+                  <h5 class="mt-0 timestamp" >{{post.time}}</h5>
+                  <p class="namestamp">
+                      {{post.username}}
+                  </p>
+                  <p class="contentstamp">
+                      {{post.content}}
+                  </p>
 
+                  <!-- <b-media>
+                      <b-img slot="aside" blank blank-color="#ccc" width="64" alt="placeholder"></b-img>
 
-
-
-        <div>
-            <router-link to="/goods/add">냥이템 등록</router-link>
-    
-        </div>
-       <div>
-            <b-card
-                class="b-card-text"
-                overlay
-                img-src="https://picsum.photos/900/250/?image=3"
-                img-alt="Card Image"
-                text-variant="white"
-                title="고양이 슬리퍼"
-                sub-title="좋아용"
-            >
-                <b-card-text>
-                따뜻하고 폭신하고 귀욤뽀짝한 슬리퍼 사라냥 "3"
-                </b-card-text>
-            </b-card>
-        </div>
-        <!-- <div>
-            <b-card no-body class="overflow-hidden" style="max-width: 1300px;">
-                <b-row no-gutters>
-                <b-col md="6">
-                    <b-card-img src="https://picsum.photos/400/400/?image=20" class="rounded-0"></b-card-img>
-                </b-col>
-                <b-col md="6">
-                    <b-card-body title="Horizontal Card">
-                    <b-card-text>
-                        This is a wider card with supporting text as a natural lead-in to additional content.
-                        This content is a little bit longer.
-                    </b-card-text>
-                    </b-card-body>
-                </b-col>
-                </b-row>
-            </b-card>
-        </div> -->
-
-
-        <div class="user-list" v-for="item in items" :key="item.id">
-            <b-card no-body class="overflow-hidden" style="max-width: 1300px;">
-                <b-row no-gutters>
-                <b-col md="6">
-                    <b-card-img :src="item.itemimg" class="rounded-0"></b-card-img>
-                </b-col>
-                <b-col md="6">
-                    <b-card-title class="card-title">{{item.itemName}} </b-card-title>
-                    <b-card-body >
-                    <b-card-text class="card-body">
-                        {{item.price}}
-                    </b-card-text>
-                    <b-card-text class="card-body">
-                        {{item.shortIntro}}
-                    </b-card-text>
-                    </b-card-body>
-                </b-col>
-                </b-row>
-            </b-card>
+                      <h5 class="mt-0">댓글</h5>
+                      <p class="mb-0">
+                      Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in
+                      faucibus.
+                      </p>
+                  </b-media>   -->
+                  </b-media>
+              </b-card>
+            </div>
         </div>
 
         <div class="loader-section" v-if="loading">
@@ -120,40 +98,103 @@
   import {storage} from '../main'
   import Carousel from '../components/Carousel.vue'
   import Vue from 'vue'
+  import firebase from 'firebase'
 
 
   // import slideshow from '../components/Slideshow.vue'
   export default {
-    name: 'goods',
+    name: 'posts-page',
     components: {
-      Carousel
     },
     data () {
       return {
-        items: [],
-        loading: true
+        text: '',
+        posts: [],
+        loading: true,
+        user: '',
+        content: '',
+        profilepicurl: '',
+        time: null,
+        username:'',
+        now: '',
+        timenum: ''
+        
       }
     },
+
     created () {
-      db.collection('MarketItemList').get().then((querySnapshot) => {
+      console.log('Posts page created')
+      var postsref = db.collection("Community");
+      // postsref.orderBy("content").limit(7);
+      // console.log("postsref",postsref)
+      postsref.get().then((querySnapshot) => {
         this.loading = false
         querySnapshot.forEach((doc) => {
           let data = {
             'id': doc.id,
-            'itemName': doc.data().itemName,
-            'price': doc.data().price,
-            'shortIntro': doc.data().shortIntro,
-            'slug': doc.data().slug,
-            'itemimg': doc.data().downloadURL
+            'username': doc.data().username,
+            'content': doc.data().content,
+            'time': doc.data().time,
+            'timenum': doc.data().timenum,
+            'profilepicurl': doc.data().profilepicurl,
           }
-          this.items.push(data)
+          this.posts.push(data)
+          console.log("data: ", data)
+          this.posts.sort(function(a,b) {return b.timenum - a.timenum})
         })
+
       })
+
+      this.user=firebase.auth().currentUser;
+      if(this.user.photoUrl !== null){
+            console.log('user has url: ', this.user.photoURL)
+            this.profilepicurl = this.user.photoURL
+            console.log('userprofilepic uploaded')
+        }
+      if(this.user.displayName != null){
+          // console.log('user has displayName: ', user.displayName)
+          this.username = this.user.displayName
+          console.log('username uploaded')
+      }
+
+
+    },
+
+    methods: {
+      
+
+      savepost(){
+          console.log('Entered savepost method')
+          var d = Date(Date.now());
+          var e = new Date().getTime();
+          // now = 
+          // console.log('now2: ', now)
+          // now: d.toString()
+          db.collection('Community').add({
+              content: this.content,
+              profilepicurl: this.profilepicurl,
+              time: d.toString(),
+              username: this.username,
+              timenum: e,
+              id: e
+          })
+              .then(function (docRef) {
+              console.log('Document written with ID: ', docRef.id)
+              })
+              .catch(function (error) {
+              console.error('Error adding document: ', error)
+              })
+
+      }
     }
+
+    
   }
 </script>
 
 <style lang="scss" scoped>
+
+
 
 .temp-class{
   font-size: 4rem;
@@ -165,9 +206,56 @@
 //   .temp{
 //     font-family: 'yg-jalnan', sans-serif;
 //   }
+
+    .cont {
+      margin: 2rem;
+      text-align: left;
+    }
     .b-card-text{
         font-family: 'Goyang', cursive;
         font-size: 100px;
+    }
+
+    .timestamp{
+      margin-top: 0.5rem;
+      font-family: 'Goyang';
+      margin-bottom: 0.1rem;
+      font-size: 0.8rem;
+      color: #fc869a;
+      position: left;
+    }
+    .namestamp{
+      font-family: 'Goyang';
+      color: hsl(0, 1%, 61%);
+      margin-top: 0.1rem;
+      font-size: 0.8rem;
+    }
+    .contentstamp{
+      font-family: 'Goyang';
+      font-size: 1.3rem;
+      text-align: center;
+      font-weight: 550;
+    }
+
+
+
+    .btn{
+      display: inline-block;
+      color: #fff;
+      text-decoration: none;
+      padding: 0.3rem 1rem;
+      font-size: 1.2rem;
+      background: hsl(4, 90%, 88%);
+      border-radius: 0.7rem;
+      margin-top: 1rem;
+      transition-property: background;
+      transition-duration: 0.13s;
+
+    }
+
+    .btn:hover{
+      background: rgb(221, 188, 187);
+      color: #fff;
     }
 
     .card-title{
@@ -179,8 +267,9 @@
         font-size: 30px;
     }
   h1 {
-    font-family: 'Goyang', cursive;
-    font-size: 100px;
+    font-family: 'LeeHyunji', cursive;
+    font-weight: bold;
+    font-size: 3rem;
     margin: 30px 0;
   }
  

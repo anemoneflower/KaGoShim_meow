@@ -9,7 +9,7 @@
             <div class="section">
               <!-- <h1 data-aos="flip-up" data-aos-duration="3000"> 화이팅</h1> -->
               <b-img 
-                class="revealOnScroll" data-animation="fadeInUp"
+                 class="animated bounceInUp delay-4s myeffect"
                 src="https://firebasestorage.googleapis.com/v0/b/kagosim-meow.appspot.com/o/resources%2FKakaoTalk_20190721_221146212.jpg?alt=media&token=74e2054a-14b3-4502-859b-51354e6f6bd6"
                 fluid rounded alt="Responsive Rounded image" width=1200rem>
               </b-img>
@@ -18,17 +18,20 @@
               <b-container fluid class="bv-example-row">
                 <b-row>
                   <b-col>
-                    <h2> 오늘의 냥이비디오당 </h2>
+                    <h2  class="animated bounceInDown delay-6s myeffect"> 오늘의 냥이비디오당 </h2>
                     <iframe 
+                     class="animated bounceInDown delay-6s myeffect"
                       width="560" height="315" src="https://www.youtube.com/embed/2gCiWrSm-04" 
                       frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
                     </iframe>
                   </b-col>
                   <b-col>
-                    <h2>핫한 냥수다~</h2>
+                    <h2  class="animated bounceInDown delay-6s myeffect">핫한 냥수다~</h2>
+                    <a href="/#/posts" class="btn animated fadeIn delay-0.5s myeffect"> 게시판 바로가기 </a>
                     </b-col>
                   <b-col>
                     <h2>오늘의 냥템</h2>
+                    <a href="/#/goods" class="btn animated fadeIn delay-0.5s myeffect"> 굿즈 마켓 바로가기 </a>
                   </b-col>
                 </b-row>
               </b-container>
@@ -139,7 +142,7 @@ export default {
     border-radius: 30px;
     margin-top: 5rem;
     transition-property: background;
-    transition-duration: 0.3s;
+    transition-duration: 0.15s;
 
   }
 
