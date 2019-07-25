@@ -101,7 +101,8 @@ export default {
             password_check: '',
             passwordFieldType: 'password',
             passwordFieldType_check: 'password',
-            verificationmsg: ''
+            verificationmsg: '',
+            default_img: 'https://firebasestorage.googleapis.com/v0/b/kagosim-meow.appspot.com/o/profile%2Fdefault_profile.png?alt=media&token=c095635d-739e-4f39-b767-d98a64cde8e7'
         }
     },
     methods: {
@@ -117,7 +118,8 @@ export default {
                             console.error('인증메일 발송 에러', error); 
                         });
                         userData.user.updateProfile({
-                            displayName: this.name
+                            displayName: this.name,
+                            photoURL: this.default_img
                         }).catch((error) => {
                             console.log(error)
                         })

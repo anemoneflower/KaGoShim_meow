@@ -151,10 +151,8 @@ export default {
     },
     created: function(){
         this.user = firebase.auth().currentUser;
-        if(this.user.photoUrl !== null){
-            console.log('user has url: ', this.user.photoURL)
-            this.profimg = this.user.photoURL
-        }
+        console.log('user has url: ', this.user.photoURL)
+        this.profimg = this.user.photoURL
         if(this.user.displayName != null){
             // console.log('user has displayName: ', user.displayName)
             this.displayName = this.user.displayName
@@ -214,7 +212,7 @@ export default {
                     console.log(error)
                 });
             }
-            this.$router.go(this.$router.currentRoute)
+            this.$router.replace('/')
         },
         switchVisibility(){
             this.passwordFieldType = this.passwordFieldType==='password' ? 'text' : 'password'

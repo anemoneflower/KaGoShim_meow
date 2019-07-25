@@ -1,10 +1,26 @@
 <template>
 
     <div class="supporthome">
-        <h1> 예쁜 우리들을 후원하라냥! </h1>
-        <h3> 우리 1002-554-820807 (카고쉼)</h3>
-        <h5> 보내는 사람에 키워드를 적어주면 원하는 곳에 후원하겠다냥! </h5>
-        <h5> 예를 들면... "아름관"(+"이름")</h5>
+        <b-carousel
+            id="carousel-no-animation"
+            style="text-shadow: 0px 0px 2px #000"
+            no-animation
+            img-width="600"
+            img-height="400"
+            fluid
+            >
+            <b-carousel-slide
+                img-src="https://firebasestorage.googleapis.com/v0/b/kagosim-meow.appspot.com/o/support_banner.jpg?alt=media&token=ba008517-07c9-46bd-8737-aeb86fd4fa0a"
+            >
+            <div class="carousel-titles">
+                <h1> 예쁜 우리들을 후원하라냥! </h1>
+                <h3> 3333-06-76535542 (이기쁨)</h3>
+                <h5> 보내는 사람에 키워드를 적어주면 원하는 곳에 후원하겠다냥! </h5>
+                <h5> 예를 들면... "TNR"(+"이름")</h5>
+            </div>
+            </b-carousel-slide>
+        </b-carousel>
+
         <b-card 
             v-for="k in support.length" v-bind:key=k 
             no-body
@@ -22,14 +38,13 @@
                         </b-card-text>
                     </b-card-body>
                 </b-col>
-                <!-- <b-col cols="2"></b-col> -->
                 <b-col cols="3">
                     <b-card-img :src=support[k-1].imgurl class="m-0"/>
                 </b-col>
             </b-row>
         </b-card>
 
-        <b-button variant="dark"  v-if="canWrite">
+        <b-button variant="dark" class="m-3"  v-if="canWrite">
             <router-link to="/supportwriter" class="writerLink">Write new Support</router-link>
         </b-button>
         
@@ -90,9 +105,9 @@ export default {
   h1{
     margin: 50px;
     display: block;
-    font-size: 2.3em;
+    font-size: 2.5em;
     font-weight: bold;
-    font-family: 'LotteMartHappy'
+    /* font-family: 'LotteMartHappy' */
   }
   h3 { 
   display: block;
@@ -118,5 +133,9 @@ h5 {
   }
   .b-card{
       border:none;
+  }
+  .carousel-titles{
+      margin: 10px;
+      padding: 10px;
   }
 </style>
